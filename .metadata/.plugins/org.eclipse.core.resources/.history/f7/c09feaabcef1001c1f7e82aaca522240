@@ -1,0 +1,13 @@
+package com.onlineExamApp.app.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import com.onlineExamApp.app.model.Users;
+
+public interface UserAccountRepository extends JpaRepository<Users, Integer>{
+
+	@Query("SELECT u FROM users u WHERE u.email LIKE %:email%")
+	Users findByEmail(@Param("email") String email);
+}

@@ -1,0 +1,108 @@
+package com.onlineExamApp.app.model;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+@Entity
+public class Exam {
+	
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer exam_id;
+	
+	private String exam_name;
+	
+	private String addedBy;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date last_updated;
+	
+	private Integer no_ques;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date exam_date;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd h:mm a")
+	private Date exam_start;
+	
+	@DateTimeFormat(pattern = "HH-mm-ss")
+	private Date exam_duration;
+
+		
+    public Integer getExamId() {
+        return exam_id;
+    }
+    
+    public void setExamId(Integer exam_id) {
+		this.exam_id = exam_id;
+	}
+	
+	
+	public String getExamName() {
+		return exam_name;
+	}
+
+	public void setExamName(String exam_name) {
+		this.exam_name = exam_name;
+	}
+	
+	public String getAddedBy() {
+		return addedBy;
+	}
+
+	public void setAddedBy(String addedBy) {
+		this.addedBy = addedBy;
+	}
+
+	public Date getLastUpdatedDate() {
+		return last_updated;
+	}
+
+	public void setLastUpdatedDate(Date last_updated) {
+		this.last_updated = last_updated;
+	}
+	
+	public Integer getNoQue() {
+        return no_ques;
+    }
+	
+	public void setNoQue(Integer no_ques) {
+        this.no_ques = no_ques;
+    }
+
+	public Date getExamDate() {
+        return exam_date;
+    }
+	
+	public void setExamDate(Date exam_date) {
+        this.exam_date = exam_date;
+    }
+	
+	public Date getExamStart() {
+        return exam_start;
+    }
+	
+	public void setExamStart(Date exam_start) {
+        this.exam_start = exam_start;
+    }
+	
+	public Date getDuration() {
+        return exam_duration;
+    }
+	
+	public void setDuration(Date exam_duration) {
+        this.exam_duration = exam_duration;
+    }
+
+	
+}

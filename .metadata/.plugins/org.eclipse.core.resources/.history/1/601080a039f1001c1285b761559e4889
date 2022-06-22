@@ -1,0 +1,42 @@
+package com.onlineExamApp.app.service;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.onlineExamApp.app.model.Book;
+import com.onlineExamApp.app.model.Search;
+import com.onlineExamApp.app.repository.BookRepository;
+
+@Service
+@Transactional
+public class BookService {
+	
+	@Autowired
+	private BookRepository repo;
+	
+	public List<Book> listAll() {
+        return repo.findAll();
+    }
+     
+    public void save(Book book) {
+        repo.save(book);
+    }
+     
+    public Book get(Integer id) {
+        return repo.findById(id).get();
+    }
+     
+    public void delete(Integer id) {
+        repo.deleteById(id);
+    }
+
+	public List<Book> listSearched(Search search) {
+		return repo.listSearched(search.getName());
+	}
+	
+
+}

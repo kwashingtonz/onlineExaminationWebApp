@@ -1,0 +1,19 @@
+1655791386729	Rename package 'com.eadcw3.libraryapp'
+1655791427510	Rename package 'com.eadcw3.libraryapp.util'
+1655791486302	Rename package 'com.eadcw3.libraryapp.service'
+1655791515379	Rename package 'com.eadcw3.libraryapp.repository'
+1655791532472	Rename package 'com.eadcw3.libraryapp.model'
+1655791547446	Rename package 'com.eadcw3.libraryapp.controller'
+1655791558611	Rename package 'com.eadcw3.libraryapp.config'
+1655799023183	Rename type 'BookController'
+1655799035144	Rename type 'Book'
+1655799049857	Rename type 'BookRepository'
+1655799065811	Rename type 'BookService'
+1655805990987	Rename type 'CategoryRepository'
+1655806009776	Rename type 'CategoryService'
+1655806026668	Rename type 'Category'
+1655806776615	Delete element
+1655806781816	Delete element
+1655806848425	Delete element
+1655863024909	Rename type 'UserAccount'
+1655863049181	Rename type 'UserAccountRepository'

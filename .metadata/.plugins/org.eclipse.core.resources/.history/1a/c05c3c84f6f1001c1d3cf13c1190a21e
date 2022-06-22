@@ -1,0 +1,37 @@
+package com.eadcw3.libraryapp.service;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.eadcw3.libraryapp.model.Category;
+import com.eadcw3.libraryapp.repository.CategoryRepository;
+
+@Service
+@Transactional
+public class CategoryService {
+	
+	@Autowired
+	private CategoryRepository repo;
+	
+	public List<Category> listAll() {
+        return repo.findAll();
+    }
+     
+    public void save(Category book) {
+        repo.save(book);
+    }
+     
+    public Category get(Integer id) {
+        return repo.findById(id).get();
+    }
+     
+    public void delete(Integer id) {
+        repo.deleteById(id);
+    }
+	
+
+}

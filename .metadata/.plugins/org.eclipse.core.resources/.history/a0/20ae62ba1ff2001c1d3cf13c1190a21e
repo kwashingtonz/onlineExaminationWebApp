@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="common/head :: head">
+</head>
+<style type="text/css">
+    .exactCenter {
+      width:1000px;
+      height:200px;
+      position: fixed;
+      top: 50%;
+      left: 45%;
+      margin-top: -100px;
+      margin-left: -100px;
+    }
+  </style>
+<body>
+	<div id="content">
+	<nav lang="en" th:replace="common/header :: header"></nav>
+	<div class="container-fluid mt-5">
+		
+		<div class="row justify-content-center align-items-center">
+		<div class="exactCenter">
+			<div class="col col-sm-6 col-md-6 col-lg-4 col-xl-4">
+				<p class="login-box-msg">Login by entering your credentials</p>
+				<span class="invalid-feedback"> <strong th:text="${error}"></strong>
+				</span>
+				<form method="POST" th:action="@{/login}">
+					<div class="form-group">
+						<input name="username" type="text" class="form-control"
+							placeholder="Enter Email" required="required" />
+					</div>
+					<div class="form-group">
+						<input name="password" placeholder="Password" required="required"
+							type="password" class="form-control" />
+					</div>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+				</form>
+			</div>
+			</div>
+		</div>
+		
+	</div>
+	</div>
+	<footer lang="en" th:replace="common/footer :: footer"></footer>
+</body>
+<script>	
+		window.onload = function(){
+			var error = url.searchParams.get("error");
+			
+			if(error == "error"){
+				alert("Incorrect Credentials");
+			}
+		}
+</script>
+</html>

@@ -1,0 +1,2 @@
+INDEX VERSION 1.131+D:\Learning Materials\Avenir IT\myworkspace\.metadata\.plugins\org.eclipse.jdt.core
+3708618698.index
