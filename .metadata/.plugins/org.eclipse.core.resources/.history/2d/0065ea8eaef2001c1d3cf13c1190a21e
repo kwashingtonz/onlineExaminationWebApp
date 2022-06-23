@@ -1,0 +1,5 @@
+package com.onlineExamApp.app.config;
+
+public class LoginSuccessHandler {
+
+}

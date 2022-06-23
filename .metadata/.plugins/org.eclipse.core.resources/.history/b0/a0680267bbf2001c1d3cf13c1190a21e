@@ -1,0 +1,65 @@
+package com.onlineExamApp.app.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.onlineExamApp.app.model.Exam_Questions;
+import com.onlineExamApp.app.model.Search;
+import com.onlineExamApp.app.service.QuestionService;
+import com.onlineExamApp.app.util.PaginatorHelper;
+
+@Controller
+@RequestMapping("/exam/question")
+public class QuestionController {
+	
+	@Autowired
+	private QuestionService service;
+	
+	@RequestMapping("/add")
+	public String add(Model model) {
+		Exam_Questions question = new Exam_Questions();
+		
+	    model.addAttribute("exam", exam);	  
+		return "exam/add";
+	}
+	
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public String save(@ModelAttribute("exam") Exam exam) {
+	    service.save(exam);
+	     
+	    return "redirect:/exam";
+	}
+	
+	@RequestMapping("/edit/{id}")
+	public String showEditExamPage(Model model,@PathVariable(name = "id") int id) {
+	    Exam exam = service.get(id);
+	    
+	    model.addAttribute("exam", exam);
+	    
+	    return "exam/add";
+	}
+	
+	@RequestMapping(value="/delete/{id}")
+	public String delete(Model model,@PathVariable(name = "id") int id) {
+	    service.delete(id);
+	    
+	    return "redirect:/exam";
+	}
+	
+	@GetMapping("/403")
+	public String error403() {
+		return "403";
+	}
+}
+

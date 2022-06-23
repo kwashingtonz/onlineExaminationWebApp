@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.onlineExamApp.app.model.Exam;
-import com.onlineExamApp.app.model.Search;
 
 public interface ExamRepository extends JpaRepository<Exam, Integer>{
 

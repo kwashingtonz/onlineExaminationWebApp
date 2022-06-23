@@ -24,16 +24,13 @@ public class Exam {
 	
 	private String addedBy;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date lastUpdatedDate;
 	
 	private Integer noQues;
-	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date date;
-	
-	@DateTimeFormat(pattern = "HH-mm-ss")
-	private Date start;
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm aa")
+	private Date startDateTime;
 	
 	@DateTimeFormat(pattern = "HH-mm-ss")
 	private Date duration;
@@ -80,20 +77,13 @@ public class Exam {
         this.noQues = noQues;
     }
 
-	public Date getDate() {
-        return date;
+	
+	public Date getStartDateTime() {
+        return startDateTime;
     }
 	
-	public void setDate(Date date) {
-        this.date = date;
-    }
-	
-	public Date getStart() {
-        return start;
-    }
-	
-	public void setStart(Date start) {
-        this.start = start;
+	public void setStartDateTime(Date startDateTime) {
+        this.startDateTime = startDateTime;
     }
 	
 	public Date getDuration() {

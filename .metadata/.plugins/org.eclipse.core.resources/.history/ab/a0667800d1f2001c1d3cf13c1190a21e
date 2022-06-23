@@ -1,0 +1,15 @@
+@media only screen and (min-width: 768px) {
+  .table-responsive {
+    overflow-x: hidden;
+  }
+}
+
+li.page-item.active a.page-link {
+	background-color: #d6dbd7 !important;
+}
+
+
+.pl-6,
+.px-6 {
+  padding-left: 40rem !important;
+}

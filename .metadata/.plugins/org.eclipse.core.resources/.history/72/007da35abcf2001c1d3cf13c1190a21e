@@ -1,0 +1,15 @@
+package com.onlineExamApp.app.repository;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import com.onlineExamApp.app.model.Exam_Questions;
+
+public interface QuestionRepository extends JpaRepository<Exam_Questions, Integer>{
+
+	@Query("SELECT i FROM Exam_Questions i WHERE i.que_id LIKE %:que_id% order by i.que_id desc")
+	List<Exam_Questions> listSearched(@Param("que_id") String que_id);
+
+}

@@ -17,3 +17,10 @@
 1655806848425	Delete element
 1655863024909	Rename type 'UserAccount'
 1655863049181	Rename type 'UserAccountRepository'
+1655958515180	Delete element
+1655960174555	Delete element
+1655964143871	Delete element
+1655965120219	Rename type 'Exam_Questions'
+1655974099913	Rename type 'QuestionController'
+1655974119471	Rename type 'QuestionService'
+1655974135446	Rename type 'QuestionRepository'

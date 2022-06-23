@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head lang="en" th:replace="common/head :: head"></head>
+<body>
+
+	<div id="content">	
+		<nav lang="en" th:replace="common/header :: header"></nav>
+		<div class="container my-3">
+			<nav aria-label="breadcrumb">
+			  <ol class="breadcrumb">
+			    <li class="breadcrumb-item active" aria-current="page">Questions</li>
+			    <li><a class="btn btn-primary btn-block" th:href="@{/exam/question/add}"> Add Question </a> </li>
+			  </ol>
+			</nav>
+		
+			<div class="table-responsive">
+			    <table class="table table-bordered table-striped"  style="overflow-x: auto !important;">
+			        <thead>
+			            <tr>
+			                <th>#</th>
+			                <th>Question</th>			                
+			                <th>Answer 1</th>			        			                
+			                <th>Answer 2</th>      
+			                <th>Answer 3</th>
+			                <th>Answer 4</th>
+			                <th>Correct Answer</th>
+			                <th>Actions</th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			        	<th:block th:if="${page.content.size() > 0 }">
+							<tr th:each="exam ,rowNumber : ${page.content}">	
+				                <td th:text="${(page.number * page.size) + rowNumber.index + 1}"></td>
+				                <td th:text="${exam.name}"></td>				               
+				                <td th:text="${#dates.format(exam.lastUpdatedDate, 'yyyy-MMM-dd')}"></td>               				                				          				                
+				                <td th:text="${#dates.format(exam.startDateTime, 'yyyy-MMM-dd hh:mm a')}"></td>      
+				               	<td th:text="${#dates.format(exam.duration, 'h:mm a')}"></td>      				             
+				                <td sec:authorize="hasAnyAuthority('TEACHER')">
+				                    <button class="btn btn-sm btn-warning" 
+										th:href="@{'/exam/edit/' + ${exam.id}}" data-toggle="confirmation" data-singleton="true"> Edit</button>
+									<button sec:authorize="hasAuthority('TEACHER')" class="btn btn-sm btn-danger" 
+										th:href="@{'/exam/delete/' + ${exam.id}}" data-toggle="confirmation" data-singleton="true"> Delete</button>
+				                </td>
+			            	</tr>
+			            </th:block>
+			            <th:block th:unless="${page.content.size() > 0 }">
+							<tr>
+								<td colspan="100%" class="alert alert-danger" style="text-align: center;">No Questions Available</td>
+							</tr>
+						</th:block>
+			        </tbody>
+			    </table>
+			    <th:block lang="en" th:replace="common/pager :: common"> </th:block>
+			</div>
+		</div>   
+	</div>
+	<script type="text/javascript">
+		$('#examMenuItem').addClass('active');
+	</script>
+	<footer lang="en" th:replace="common/footer :: footer"></footer>
+	<script th:src='@{/js/bootstrap-confirmation.min.js}'></script>
+	<script th:src="@{/js/confirmation-config.js}"></script>
+</body>
+</html>

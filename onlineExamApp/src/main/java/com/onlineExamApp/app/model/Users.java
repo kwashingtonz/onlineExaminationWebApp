@@ -2,6 +2,7 @@ package com.onlineExamApp.app.model;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -39,6 +40,7 @@ public class Users {
 			inverseJoinColumns = @JoinColumn(name = "role_id")
 			)
 	private Set<Role> roles = new HashSet<>();
+	
 
 	public Set<Role> getRoles() {
 		return roles;

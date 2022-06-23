@@ -33,8 +33,7 @@ CREATE TABLE `exam` (
   `added_by` varchar(255) DEFAULT NULL,
   `last_updated_date` datetime DEFAULT NULL,
   `no_ques` int(11) DEFAULT NULL,
-  `date` date NOT NULL,
-  `start` datetime NOT NULL,
+  `start_date_time` datetime NOT NULL,
   `duration` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
