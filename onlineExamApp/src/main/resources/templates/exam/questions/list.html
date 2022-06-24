@@ -10,9 +10,9 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 		<div class="container my-3">
 			<nav aria-label="breadcrumb">
 			  <ol class="breadcrumb">
-			    <li class="breadcrumb-item"><a th:href="@{/exam/add}">&lt Exam</a></li>
-			    <li class="breadcrumb-item active" aria-current="page">Questions</li> 	 
-			    	<li class="pl-6" > <a class="btn btn-sm btn-primary btn-block" th:href="@{/exam/question/add}"> Add Question </a> </li> 
+			    <li class="breadcrumb-item"><a th:href="@{/exam}">&lt Exam</a></li>
+			    <li class="breadcrumb-item active" aria-current="page">Questions List</li> 	 
+			    	<li class="pl-6" > <a class="btn btn-sm btn-primary btn-block" th:href="@{/exam/questions/add}"> Add Question </a> </li> 
 					<li class="ml-auto"> <a class="btn btn-sm btn-primary btn-block" th:href="@{/exam}"> Publish Exam </a> </li> 			  			
 			    </ol>
 			</nav>
@@ -43,9 +43,9 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 				                <td th:text="${examQuestions.CorrectAnswer}"></td>				                 				             
 				                <td>
 				                    <button class="btn btn-sm btn-warning" 
-										th:href="@{'/question/edit/' + ${examQuestions.queId}}" data-toggle="confirmation" data-singleton="true"> Edit</button>
+										th:href="@{'/questions/edit/' + ${examQuestions.queId}}" data-toggle="confirmation" data-singleton="true"> Edit</button>
 									<button class="btn btn-sm btn-danger" 
-										th:href="@{'/question/delete/' + ${examQuestions.queId}}" data-toggle="confirmation" data-singleton="true"> Delete</button>
+										th:href="@{'/questions/delete/' + ${examQuestions.queId}}" data-toggle="confirmation" data-singleton="true"> Delete</button>
 				                </td>
 			            	</tr>
 			            </th:block>
@@ -62,7 +62,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	</div>
 	
 	<script type="text/javascript">
-		$('#questionMenuItem').addClass('active');
+		$('#questionsMenuItem').addClass('active');
 	</script>
 	<footer lang="en" th:replace="common/footer :: footer"></footer>
 	<script th:src='@{/js/bootstrap-confirmation.min.js}'></script>

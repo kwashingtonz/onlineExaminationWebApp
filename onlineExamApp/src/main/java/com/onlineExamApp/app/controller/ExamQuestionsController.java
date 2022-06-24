@@ -14,14 +14,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.onlineExamApp.app.model.Exam;
 import com.onlineExamApp.app.model.ExamQuestions;
 import com.onlineExamApp.app.model.Search;
 import com.onlineExamApp.app.service.ExamQuestionsService;
 import com.onlineExamApp.app.util.PaginatorHelper;
 
 @Controller
-@RequestMapping("/exam/question")
+@RequestMapping("exam/questions")
 public class ExamQuestionsController {
 	
 	@Autowired
@@ -31,11 +30,11 @@ public class ExamQuestionsController {
 	@RequestMapping(value= "", method = { RequestMethod.GET, RequestMethod.POST })
 	public String list(@ModelAttribute(value = "search") Search search,Model model, 
 			@PageableDefault(value = PaginatorHelper.DEFAULT_PAGINATION_SIZE, page = 0) Pageable pageable) {
-		List<ExamQuestions> question = service.listSearched(search);
-		Page<ExamQuestions> page=PaginatorHelper.pagiableList(question, pageable);
-		model.addAttribute("question", question);
+		List<ExamQuestions> questions = service.listSearched(search);
+		Page<ExamQuestions> page=PaginatorHelper.pagiableList(questions, pageable);
+		model.addAttribute("questions", questions);
 		model.addAttribute("page", page);
-		return "exam/question/list";
+		return "exam/questions/list";
 	}
 	
 	@RequestMapping("/add")
@@ -43,30 +42,30 @@ public class ExamQuestionsController {
 		ExamQuestions question = new ExamQuestions();
 		
 	    model.addAttribute("question",question);	  
-		return "exam/question/add";
+		return "exam/questions/add";
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String save(@ModelAttribute("question") ExamQuestions question) {
-	    service.save(question);
+	public String save(@ModelAttribute("questions") ExamQuestions questions) {
+	    service.save(questions);
 	     
-	    return "redirect:/exam/question";
+	    return "redirect:/exam/questions";
 	}
 	
 	@RequestMapping("/edit/{id}")
 	public String showEditQuestionPage(Model model,@PathVariable(name = "queId") int id) {
-	    ExamQuestions question = service.get(id);
+	    ExamQuestions questions = service.get(id);
 	    
-	    model.addAttribute("question", question);
+	    model.addAttribute("questions", questions);
 	    
-	    return "exam/question/add";
+	    return "exam/questions/add";
 	}
 	
 	@RequestMapping(value="/delete/{id}")
 	public String delete(Model model,@PathVariable(name = "queId") int id) {
 	    service.delete(id);
 	    
-	    return "redirect:/exam/question";
+	    return "redirect:/exam/questions";
 	}
 	
 	@GetMapping("/403")

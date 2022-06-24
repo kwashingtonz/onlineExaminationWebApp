@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.onlineExamApp.app.model.Exam;
 import com.onlineExamApp.app.model.Search;
+import com.onlineExamApp.app.model.SearchTeacher;
 import com.onlineExamApp.app.repository.ExamRepository;
 
 @Service
@@ -38,5 +39,8 @@ public class ExamService {
 		return repo.listSearched(search.getName());
 	}
 	
+	public List<Exam> listTeacherSearched(SearchTeacher searchName,SearchTeacher searchTeacher) {
+		return repo.listTeacherSearched(searchTeacher.getName(),searchTeacher.getAddedBy());
+	}
 
 }

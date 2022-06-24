@@ -1,11 +1,16 @@
 package com.onlineExamApp.app.controller;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +21,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.onlineExamApp.app.model.Exam;
 import com.onlineExamApp.app.model.Search;
+import com.onlineExamApp.app.model.SearchTeacher;
 import com.onlineExamApp.app.service.ExamService;
+import com.onlineExamApp.app.service.MyUserDetails;
 import com.onlineExamApp.app.util.PaginatorHelper;
 
 @Controller
@@ -25,22 +32,37 @@ public class ExamController {
 	
 	@Autowired
 	private ExamService service;
-
+	
 	@RequestMapping(value= "", method = { RequestMethod.GET, RequestMethod.POST })
-	public String list(@ModelAttribute(value = "search") Search search,Model model, 
+	public String list(@ModelAttribute(value = "search") Search search,SearchTeacher searchName,SearchTeacher searchTeacher,Model model, 
 			@PageableDefault(value = PaginatorHelper.DEFAULT_PAGINATION_SIZE, page = 0) Pageable pageable) {
-		List<Exam> exams = service.listSearched(search);
-		Page<Exam> page=PaginatorHelper.pagiableList(exams, pageable);
+		
+		Collection<? extends GrantedAuthority> authorities;
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        authorities = auth.getAuthorities();
+        String myRole = authorities.toArray()[0].toString();
+        List<Exam> exams;
+        Page<Exam> page;
+        if (myRole.equals("TEACHER")) {
+    		exams = service.listTeacherSearched(searchName,searchTeacher);
+        }else { 	
+        	exams = service.listSearched(search);
+       }
+        
+        page=PaginatorHelper.pagiableList(exams, pageable);
 		model.addAttribute("exams", exams);
 		model.addAttribute("page", page);
-		return "exam/list";
+		
+        return "exam/list";	
 	}
 	
 	@RequestMapping("/add")
-	public String add(Model model) {
+	public String add(@AuthenticationPrincipal MyUserDetails user, Model model) {
 		Exam exam = new Exam();
-		
-	    model.addAttribute("exam", exam);	  
+
+		model.addAttribute("user", user);
+	    model.addAttribute("exam", exam);
+	    
 		return "exam/add";
 	}
 	

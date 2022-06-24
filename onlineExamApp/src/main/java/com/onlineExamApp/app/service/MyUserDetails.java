@@ -11,6 +11,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import com.onlineExamApp.app.model.Role;
 import com.onlineExamApp.app.model.Users;
 
+@SuppressWarnings("serial")
 public class MyUserDetails implements org.springframework.security.core.userdetails.UserDetails {
 
 	private Users user;
@@ -61,6 +62,14 @@ public class MyUserDetails implements org.springframework.security.core.userdeta
 	@Override
 	public boolean isEnabled() {
 		return true;
+	}
+	
+	public String getName() {
+		return user.getName();
+	}
+	
+	public Integer getId() {
+		return user.getId();
 	}
 
 }

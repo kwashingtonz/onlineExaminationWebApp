@@ -1,8 +1,6 @@
 package com.onlineExamApp.app.model;
 
-import java.util.Date;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,10 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Users {

@@ -7,7 +7,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.onlineExamApp.app.model.Exam;
 import com.onlineExamApp.app.model.ExamQuestions;
 import com.onlineExamApp.app.model.Search;
 import com.onlineExamApp.app.repository.ExamQuestionsRepository;

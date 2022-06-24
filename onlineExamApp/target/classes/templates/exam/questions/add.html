@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="common/head :: head"></head>
+<body>
+
+	<div id="content">	
+		<nav lang="en" th:replace="common/header :: header"></nav>
+		<div class="container my-3">
+			<nav aria-label="breadcrumb">
+			  <ol class="breadcrumb">
+			    <li class="breadcrumb-item"><a th:href="@{/exam}">&lt Exam List</a></li>			    
+			    <li class="breadcrumb-item"><a th:href="@{/exam/questions}">&lt Questions List</a></li>
+			    <li class="breadcrumb-item active" aria-current="page">Add Question</li>
+			  </ol>
+			</nav>
+			<div class="container">
+			  <form th:action="@{/questions/save}" th:object="${questions}" method="post" class="need-validated">
+			  	
+			 	<button type="submit" class="btn btn-primary">Submit</button>			 	
+			 	</form>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$('#questionMenuItem').addClass('active');
+	</script>
+	<footer lang="en" th:replace="common/footer :: footer"></footer>
+
+</body>
+</html>

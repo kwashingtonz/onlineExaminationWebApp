@@ -47,7 +47,8 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 			        	<th:block th:if="${page.content.size() > 0 }">
 							<tr th:each="exam ,rowNumber : ${page.content}">	
 				                <td th:text="${(page.number * page.size) + rowNumber.index + 1}"></td>
-				                <td th:text="${exam.name}"></td>				               
+				                <td sec:authorize="hasAnyAuthority('STUDENT')"><a th:text="${exam.name}" th:href="@{/exam/questions/}" ></a></td>				               				              
+				                <td sec:authorize="hasAnyAuthority('TEACHER')"><a th:text="${exam.name}" th:href="@{'/exam/questions?='+${exam.id}}" ></a></td>				               
 				                <td sec:authorize="hasAnyAuthority('TEACHER')" th:text="${#dates.format(exam.lastUpdatedDate, 'yyyy-MMM-dd')}"></td>               				                				          				                
 				                <td sec:authorize="hasAnyAuthority('STUDENT')" th:text="${#dates.format(exam.startDateTime, 'yyyy-MMM-dd hh:mm a')}"></td>      
 				               	<td sec:authorize="hasAnyAuthority('STUDENT')" th:text="${#dates.format(exam.duration, 'HH:mm:ss')}"></td>      				             
@@ -56,7 +57,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 				                
 				                <td sec:authorize="hasAnyAuthority('TEACHER')">
 				                    <button class="btn btn-sm btn-warning" 
-										th:href="@{'/exam/edit/' + ${exam.id}}" data-toggle="confirmation" data-singleton="true"> Edit</button>
+										th:href="@{'/exam/edit/' + ${exam.id}}" data-toggle="confirmation" data-singleton="true"> Edit Exam</button>
 									<button sec:authorize="hasAuthority('TEACHER')" class="btn btn-sm btn-danger" 
 										th:href="@{'/exam/delete/' + ${exam.id}}" data-toggle="confirmation" data-singleton="true"> Delete</button>			               
 				                </td>

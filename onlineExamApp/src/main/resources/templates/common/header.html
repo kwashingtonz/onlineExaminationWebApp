@@ -30,7 +30,7 @@
 				<li sec:authorize="isFullyAuthenticated()" class="nav-item dropdown" id="userMenuItem"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> <span sec:authentication="name"></span> </a>
+					aria-expanded="false"> <span sec:authentication="principal.name"></span> </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a 	class="dropdown-item" href="javascript:document.forms['logoutForm'].submit()">Logout</a>
 					</div>

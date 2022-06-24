@@ -1,15 +1,10 @@
 package com.onlineExamApp.app.model;
 
 import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -29,12 +24,12 @@ public class Exam {
 	
 	private Integer noQues;
 
-	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm aa")
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date startDateTime;
 	
-	@DateTimeFormat(pattern = "HH-mm-ss")
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date duration;
-
+	
 		
     public Integer getId() {
         return id;
