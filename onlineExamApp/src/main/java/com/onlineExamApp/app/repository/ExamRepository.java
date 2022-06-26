@@ -14,6 +14,4 @@ public interface ExamRepository extends JpaRepository<Exam, Integer>{
 	
 	@Query("SELECT i FROM Exam i WHERE  i.name LIKE %:name% AND i.addedBy LIKE %:addedBy% order by i.id desc")
 	List<Exam> listTeacherSearched(@Param("name") String name ,@Param("addedBy") String addedBy);
-
-
 }

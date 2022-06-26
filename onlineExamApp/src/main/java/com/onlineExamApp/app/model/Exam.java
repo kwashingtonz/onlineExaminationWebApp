@@ -27,8 +27,7 @@ public class Exam {
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date startDateTime;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private Date duration;
+	private String duration;
 	
 		
     public Integer getId() {
@@ -81,11 +80,11 @@ public class Exam {
         this.startDateTime = startDateTime;
     }
 	
-	public Date getDuration() {
+	public String getDuration() {
         return duration;
     }
 	
-	public void setDuration(Date duration) {
+	public void setDuration(String duration) {
         this.duration = duration;
     }
 
