@@ -27,6 +27,9 @@ public class Exam {
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date startDateTime;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date endDateTime;
+	
 	private String duration;
 	
 		
@@ -78,6 +81,14 @@ public class Exam {
 	
 	public void setStartDateTime(Date startDateTime) {
         this.startDateTime = startDateTime;
+    }
+	
+	public Date getEndDateTime() {
+        return endDateTime;
+    }
+	
+	public void setEndDateTime(Date endDateTime) {
+        this.endDateTime = endDateTime;
     }
 	
 	public String getDuration() {

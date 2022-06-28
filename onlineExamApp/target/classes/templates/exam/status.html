@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head lang="en" th:replace="common/head :: head"></head>
+<body>
+
+	<div id="content">	
+		<nav lang="en" th:replace="common/header :: header"></nav>
+		<div class="container my-3">
+		<nav aria-label="breadcrumb">
+			  <ol class="breadcrumb">
+			    <li class="breadcrumb-item"><a th:href="@{/exam}" >Exam List</a></li>
+			    <li class="breadcrumb-item active" aria-current="page" th:text="${exam.name} +' Exam Status'"></li>
+			  </ol>
+			</nav>
+			
+			<div class="container">
+				<div class="table-responsive">
+			  		<table>
+			  		<tr>
+			  			<td style="border: 1px solid #dee2e6;" width="600px" height="250px">
+			  				
+			  				<table>
+			  					<tr>
+			  						<td style="padding-bottom:15px; padding-left:10px;" width="200px" height="50px">
+			  							Exam Completed
+			  						</td>
+			  						<td width="200px">
+			  						</td>
+			  						<td width="200px">
+			  						</td>
+			  					</tr>
+			  						
+			  					<tr>
+			  						<td colspan="3" height="150px">
+			  							<!-- Out of 10/50 text -->
+			  						</td>
+			  					</tr>
+			  					<tr>
+			  						<td style="padding-bottom:15px; padding-left:150px;" colspan="3" height="50px">
+			  							Time Left :
+			  						</td>
+			  					</tr>
+			  				</table>	
+			  				
+			  			</td>
+			  			
+			  			<td style="border: 1px solid #dee2e6;" rowspan="2" width="5px" background="white" height="100%">
+			  			</td>
+			  			
+			  			<td style="border: 1px solid #dee2e6; vertical-align:top; padding-top:8px; padding-left:10px;" rowspan="2" width="600px" height="400px">
+			  				Attending Student List
+			  			</td>	  			
+			  		</tr>
+			  		<tr>
+			  			<td style="border: 1px solid #dee2e6; padding-bottom:50px; padding-left:10px;" height="50%">
+			  				Exam Started Time : <br><br>
+			  				Exam Ending Time :
+			  			</td> 			
+			  		</tr>
+			  		<tr>
+			  			<td style="text-align:right;" colspan="3" height="50px">
+			  				<button class="btn btn-sm btn-danger"> End Exam </button>
+			  			</td>
+			  		</tr>
+			  		</table>
+			 	</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$('#statusMenuItem').addClass('active');
+		
+		
+	</script>	
+	<footer lang="en" th:replace="common/footer :: footer"></footer>
+	<script th:src='@{/js/bootstrap-confirmation.min.js}'></script>
+	<script th:src="@{/js/confirmation-config.js}"></script>
+</body>
+</html>

@@ -16,14 +16,13 @@
 					class="nav-link" th:href="@{/}">Dashboard
 						<span class="sr-only">(current)</span>
 				</a></li>
-				<li sec:authorize="hasAuthority('TEACHER')" class="nav-item dropdown" id="examMenuItem"><a
+				<li class="nav-item dropdown" id="examMenuItem"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> Exams </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item"
-							 th:href="@{/exam}">Exam List</a> 
-						<a class="dropdown-item" th:href="@{/exam/add}">Add Exam</a>
+							 th:href="@{/exam}">Exam List</a> 					
 					</div></li> 
 			</ul>
 			<ul class="navbar-nav ml-auto">

@@ -8,38 +8,214 @@
 		<div class="container my-3">
 			<nav aria-label="breadcrumb">
 			  <ol class="breadcrumb">
-			    <li class="breadcrumb-item"><a th:href="@{/exam}">&lt Exam List</a></li>
-			    <li class="breadcrumb-item active" aria-current="page">Add Exam</li>
+			    <li class="breadcrumb-item"><a th:href="@{/exam}">Exam List</a></li>
+			    <li class="breadcrumb-item active" aria-current="page" th:text="${exam.name}"></li>
 			  </ol>
 			</nav>
 			<div class="container">
+			  <div class="table-responsive">
+			  <table>
+			  <tr>
+			  <td>
 			  <form onsubmit="calculateDuration()" th:action="@{/exam/save}" th:object="${exam}" method="post" class="need-validated">
 			  <input type="hidden" th:field="*{id}">
+			  
 			    <div class="form-group">
 			      <label for="name">Exam Name:</label>
 			      <input type="text" class="form-control" id="name" placeholder="Enter Exam name" th:field="*{name}" required>
 			    </div>			  			      
 			      <input hidden="hidden" id="addedBy" type="text" th:value="${user.name}" th:id="addedBy" th:name="addedBy">			 			 		 
 			      <input id=lastUpdatedDate type="hidden" th:field="*{lastUpdatedDate}">			 			 		 
+			     
+			    <div class="table-responsive">
+			    <div class="table-responsive">
+			    <table>
+			    <tr>
+			    	<td>
+			    		<label for="questions">Question List:</label>
+			    	</td>
+			    	
+			    	<td width=850px background='white'>
+			    	</td>
+			    
+			    	<td>
+			    		<button type="button" class="btn btn-sm btn-primary btn-block" onclick="addQuestionDis()"> Add Question </button>
+			   	 	</td>
+			    </tr>
+			    <tr height=5px background='white'>
+			    </tr>
+			    </table>
+			   </div>	    
+			    <table class="table table-bordered table-striped"  style="overflow-x: auto !important;">
+			        <thead>
+			            <tr>
+			                <th>#</th>
+			                <th>Question</th>			                
+			                <th>Answer 1</th>			        			                
+			                <th>Answer 2</th>      
+			                <th>Answer 3</th>
+			                <th>Answer 4</th>
+			                <th>Correct Answer</th>
+			                <th>Actions</th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			        	<th:block th:if="${page.content.size() > 0 }">
+							<tr th:each="exam ,rowNumber : ${page.content}">	
+				                <td th:text="${(page.number * page.size) + rowNumber.index + 1}"></td>
+				                <td th:text="${examQuestions.Question}"></td>				               
+				                <td th:text="${examQuestions.Answer1}"></td>				               
+				                <td th:text="${examQuestions.Answer2}"></td>				               
+				                <td th:text="${examQuestions.Answer3}"></td>				               
+				                <td th:text="${examQuestions.Answer4}"></td>				               
+				                <td th:text="${examQuestions.CorrectAnswer}"></td>				                 				             
+				                <td>
+				                    <button class="btn btn-sm btn-warning" 
+										th:href="@{'/questions/edit/' + ${examQuestions.queId}}" data-toggle="confirmation" data-singleton="true"> Edit</button>
+									<button class="btn btn-sm btn-danger" 
+										th:href="@{'/questions/delete/' + ${examQuestions.queId}}" data-toggle="confirmation" data-singleton="true"> Delete</button>
+				                </td>
+			            	</tr>
+			            </th:block>
+			            <th:block th:unless="${page.content.size() > 0 }">
+							<tr>
+								<td colspan="100%" class="alert alert-danger" style="text-align: center;">No Questions Available</td>
+							</tr>
+						</th:block>
+			        </tbody>
+			    </table>
+			    <th:block lang="en" th:replace="common/pager :: common"> </th:block>
+			</div>
+			    <div class="table-responsive">
+			    <table>
+			    <tr>
+			    <td>
 			    <div class="form-group">
-			      <label for="start">Exam Starting Date and Time:</label>
+			      <label for="start">Starting Date and Time:</label>
 			      <input type="datetime" class="form-control" id="start" placeholder="YYYY-MM-DD 00:00:00" th:field="*{startDateTime}" required>
 			    </div>
+			    </td>
+			    <td width=10px background='white'>
+			    </td>
+			    <td>
 			    <div class="form-group">
-			      <label for="duration">Exam End Date and Time:</label>
-			      <input type="datetime" class="form-control" id="end" placeholder="YYYY-MM-DD 00:00:00" required>
+			      <label for="end">End Date and Time:</label>
+			      <input type="datetime" class="form-control" id="end" placeholder="YYYY-MM-DD 00:00:00" th:field="*{endDateTime}" required>
+			    </div>
+			    </td>
+			    </tr>
+			    </table>
 			    </div>
 			    <input type="hidden" class="form-control" id="duration" th:field="*{duration}">			   			 	
-			 	<button type="submit" class="btn btn-primary">Submit</button>	
-			 		 	
+			 	<table class="table-responsive">
+			 	<tr>
+			 	<td>
+			 	<button type="submit" class="btn btn-primary">Submit</button>
+			 	</td>
+			 	<td width="10px", background="white">
+			 	</td>
+			 	<td>
+			 	<button class="btn btn-primary btn-block" th:href="@{/exam}"> Publish Exam </button>	
+			 	</td>
+			 	</tr>
+			 	</table>
 			 	</form>
+			 	</td>
+			 	
+			 	<td width=5px background='white'>
+			 	</td>
+			 	
+			 	<td width="375px" height="100%" id="addQuestion" >
+			 		<div class="container">
+			  		<form th:action="@{/questions/save}" th:object="${question}" method="post" class="need-validated">
+			  			<div class="form-group">
+			      			<label for="question">Question:</label>
+			     	 		<input type="text" class="form-control" id="question" placeholder="Enter Question" th:name="question" th:id="question" required>
+			    		</div>			  		
+			  			<div class="form-group">
+			  				<label for="answer1">Answer 1:</label>
+			    		 	<table>
+			     	 			<tr>
+			     	 				<td>
+			    		 				<input type="text" class="form-control" id="answer1" placeholder="Enter Answer 1" th:name="answer1" th:id="answer1" required>
+			    					</td>
+			    					<td width="5px">
+			    					</td>
+			    					<td>
+			    						<input type="radio" id="ans1" name="correctAnswer" required>
+			     	  					<label for="ans1">Correct Answer</label>
+			     	  				</td>
+			     	  			</tr>
+			     	  		</table>
+			    		</div>			  		
+			  			<div class="form-group">
+			  				<label for="answer2">Answer 2:</label>
+			     	 		<table>
+			     	 			<tr>
+			     	 				<td>
+			     	 					<input type="text" class="form-control" id="answer2" placeholder="Enter Answer 2" th:name="answer2" th:id="answer2" required>
+			    					</td>
+			    					</td>
+			    					<td width="5px">
+			    					<td>
+			     	  					<input type="radio" id="ans2" name="correctAnswer">
+			     	  					<label for="ans2">Correct Answer</label>
+			     	  				</td>
+			     	  			</tr>
+			     	  		</table>	
+			    	</div>			  		
+			  		<div class="form-group">
+			  			<label for="answer3">Answer 3:</label>
+			  			<table>
+			     	 		<tr>
+			     	 			<td>
+			     	 				<input type="text" class="form-control" id="answer3" placeholder="Enter Answer 3" th:name="answer3" th:id="answer3" required>
+			    				</td>
+			    				</td>
+			    					<td width="5px">
+			    				<td>
+			     	  				<input type="radio" id="ans3" name="correctAnswer">
+			     	  				<label for="ans3">Correct Answer</label>
+			     	  		
+			     	 			</td>
+			     	 		</tr>
+			    		</table>
+			    	</div>			  		
+			  		<div class="form-group">
+			  			<label for="answer4">Answer 4:</label>
+			     	 	<table>
+			     	 		<tr>
+			     	 			<td>
+			     	 				<input type="text" class="form-control" id="answer4" placeholder="Enter Answer 4" th:name="answer4" th:id="answer4" required>
+			    				</td>
+			    				</td>
+			    					<td width="5px">
+			    				<td>
+			     	  				<input type="radio" id="ans4" name="correctAnswer">
+			     	  				<label for="ans4">Correct Answer</label>
+			    				</td>
+			    			</tr>
+			    		</table>
+			    	</div>			  		
+			     	  	
+			     	  <input hidden="hidden" id="correctAnswer" type="text" th:id="correctAnswer" th:name="correctAnswer">			 			 		 		  		
+			  			  	
+			 		<button type="submit" class="btn btn-primary" onsubmit="addQuestionSubmit()" >Save</button>			 	
+			 		</form>
+					</div>  
+			 	</td>
+			 	</tr>
+			 	</table>
+			 	</div>
 			 	 
 			</div>
 		</div>
 	</div>
 
 	<script type="text/javascript">
-		$('#examMenuItem').addClass('active');
+		$('#addExamMenuItem').addClass('active');
+		
+		document.getElementById("addQuestion").style.display= "none";
 		
 		var today = new Date();
 		
@@ -73,8 +249,45 @@
 			return true;
 		}
 		
+		function addQuestionDis(){
+			
+			var x = document.getElementById("addQuestion");
+			  if (x.style.display === "none")
+			    x.style.display = "block";
+			  
+		}
+		
+		function addQuestionSubmit(){
+			
+			if(document.getElementById("ans1").checked == true){
+				var a = document.getElementById("answer1").value;
+				document.getElementById("correctAnswer").value=a;
+			}
+			if(document.getElementById("ans2").checked == true){
+				var b = document.getElementById("answer2").value;					
+				document.getElementById("correctAnswer").value=b;
+			}
+			if(document.getElementById("ans3").checked == true){
+				var c = document.getElementById("answer3").value;
+				document.getElementById("correctAnswer").value=c;
+			}
+			if(document.getElementById("ans4").checked == true){
+				var d = document.getElementById("answer4").value;
+				document.getElementById("correctAnswer").value=d;
+			}
+			
+			
+			var x = document.getElementById("addQuestion");
+			  if (x.style.display === "block")
+			    x.style.display = "none";
+			  
+			  return true;
+			  
+		}
+		
 	</script>
 	<footer lang="en" th:replace="common/footer :: footer"></footer>
-
+	<script th:src='@{/js/bootstrap-confirmation.min.js}'></script>
+	<script th:src="@{/js/confirmation-config.js}"></script>
 </body>
 </html>

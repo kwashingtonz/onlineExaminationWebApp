@@ -9,7 +9,10 @@ import com.onlineExamApp.app.model.ExamQuestions;
 
 public interface ExamQuestionsRepository extends JpaRepository<ExamQuestions, Integer>{
 
-	@Query("SELECT i FROM ExamQuestions i WHERE i.queId LIKE %:queId% order by i.queId desc")
-	List<ExamQuestions> listSearched(@Param("queId") Integer que_id);
-
+	@Query("SELECT i FROM ExamQuestions i WHERE i.queId LIKE %:id% order by i.queId desc")
+	List<ExamQuestions> listSearched(@Param("id") Integer id);
+	
+	@Query("SELECT a FROM ExamQuestions a WHERE a.examId = ?1 order by a.queId desc")
+	List<ExamQuestions> findByExam(@Param("examId") Integer examId);
+	
 }

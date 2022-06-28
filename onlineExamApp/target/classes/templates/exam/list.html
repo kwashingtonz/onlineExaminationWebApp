@@ -12,6 +12,8 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 			  <ol class="breadcrumb">
 			    <li class="breadcrumb-item"><a th:href="@{/exam}">Exam</a></li>
 			    <li class="breadcrumb-item active" aria-current="page">Exam List</li>
+			    <li class="ml-auto" sec:authorize="hasAnyAuthority('TEACHER')"> <a class="btn btn-sm btn-primary btn-block" th:href="@{/exam/add}"> Add Exam </a> </li> 
+					
 			  </ol>
 			</nav>
 			
@@ -47,17 +49,16 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 			        	<th:block th:if="${page.content.size() > 0 }">
 							<tr th:each="exam ,rowNumber : ${page.content}">	
 				                <td th:text="${(page.number * page.size) + rowNumber.index + 1}"></td>
-				                <td sec:authorize="hasAnyAuthority('STUDENT')"><a th:text="${exam.name}" th:href="@{/exam/questions/}" ></a></td>				               				              
-				                <td sec:authorize="hasAnyAuthority('TEACHER')"><a th:text="${exam.name}" th:href="@{'/exam/questions?='+${exam.id}}" ></a></td>				               
+				                <td sec:authorize="hasAnyAuthority('STUDENT')"><a th:text="${exam.name}" th:href="@{/}" ></a></td>				               				              
+				                <td sec:authorize="hasAnyAuthority('TEACHER')"><a th:text="${exam.name}" th:href="@{'/exam/edit/' + ${exam.id}}" ></a></td>				               
 				                <td sec:authorize="hasAnyAuthority('TEACHER')" th:text="${#dates.format(exam.lastUpdatedDate, 'yyyy-MMM-dd')}"></td>               				                				          				                
 				                <td sec:authorize="hasAnyAuthority('STUDENT')" th:text="${#dates.format(exam.startDateTime, 'yyyy-MMM-dd hh:mm a')}"></td>      
-				               	<td sec:authorize="hasAnyAuthority('STUDENT')" th:text="${#dates.format(exam.duration, 'HH:mm:ss')}"></td>      				             
+				               	<td sec:authorize="hasAnyAuthority('STUDENT')" th:text="${exam.duration}"></td>      				             
 				                <td sec:authorize="hasAnyAuthority('STUDENT')" th:text="Pending"></td>				               
-				            	<td sec:authorize="hasAnyAuthority('TEACHER')" th:text="Drafted"></td>				               
+				            	<td sec:authorize="hasAnyAuthority('TEACHER')"><a id="examTeacherStatus" th:text="Drafted" th:href="@{'/exam/status/' + ${exam.id}}"></a></td>				               
 				                
 				                <td sec:authorize="hasAnyAuthority('TEACHER')">
-				                    <button class="btn btn-sm btn-warning" 
-										th:href="@{'/exam/edit/' + ${exam.id}}" data-toggle="confirmation" data-singleton="true"> Edit Exam</button>
+				        
 									<button sec:authorize="hasAuthority('TEACHER')" class="btn btn-sm btn-danger" 
 										th:href="@{'/exam/delete/' + ${exam.id}}" data-toggle="confirmation" data-singleton="true"> Delete</button>			               
 				                </td>
@@ -76,6 +77,8 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	</div>
 	<script type="text/javascript">
 		$('#examMenuItem').addClass('active');
+		
+		
 	</script>
 	<footer lang="en" th:replace="common/footer :: footer"></footer>
 	<script th:src='@{/js/bootstrap-confirmation.min.js}'></script>

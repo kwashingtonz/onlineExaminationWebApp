@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.onlineExamApp.app.model.Exam;
+import com.onlineExamApp.app.model.ExamQuestions;
 import com.onlineExamApp.app.model.Search;
 import com.onlineExamApp.app.model.SearchTeacher;
+import com.onlineExamApp.app.service.ExamQuestionsService;
 import com.onlineExamApp.app.service.ExamService;
 import com.onlineExamApp.app.service.MyUserDetails;
 import com.onlineExamApp.app.util.PaginatorHelper;
@@ -32,6 +34,9 @@ public class ExamController {
 	
 	@Autowired
 	private ExamService service;
+	
+	@Autowired
+	private ExamQuestionsService qservice;
 	
 	@RequestMapping(value= "", method = { RequestMethod.GET, RequestMethod.POST })
 	public String list(@ModelAttribute(value = "search") Search search,SearchTeacher searchName,SearchTeacher searchTeacher,Model model, 
@@ -57,9 +62,15 @@ public class ExamController {
 	}
 	
 	@RequestMapping("/add")
-	public String add(@AuthenticationPrincipal MyUserDetails user, Model model) {
+	public String add(@AuthenticationPrincipal MyUserDetails user,@ModelAttribute(value = "search") Search search, Model model,
+			@PageableDefault(value = PaginatorHelper.DEFAULT_PAGINATION_SIZE, page = 0) Pageable pageable) {
 		Exam exam = new Exam();
-
+		
+		List<ExamQuestions> question = qservice.listSearched(search);
+		Page<ExamQuestions> page=PaginatorHelper.pagiableList(question, pageable);
+		model.addAttribute("question", question);
+		model.addAttribute("page", page);
+		
 		model.addAttribute("user", user);
 	    model.addAttribute("exam", exam);
 	    
@@ -74,11 +85,21 @@ public class ExamController {
 	}
 	
 	@RequestMapping("/edit/{id}")
-	public String showEditExamPage(Model model,@PathVariable(name = "id") int id) {
-	    Exam exam = service.get(id);
+	public String showEditExamPage(@AuthenticationPrincipal MyUserDetails user,Model model, @PathVariable(name = "id") int id,
+			@PageableDefault(value = PaginatorHelper.DEFAULT_PAGINATION_SIZE, page = 0) Pageable pageable) {
+
+		List<ExamQuestions> question = qservice.listQuestionsAll(id);
+		Page<ExamQuestions> page=PaginatorHelper.pagiableList(question, pageable);
+		Exam exam = service.get(id);
+		
+		model.addAttribute("question", question);
+		model.addAttribute("page", page); 
 	    
+
+	    model.addAttribute("user", user);
 	    model.addAttribute("exam", exam);
 	    
+		
 	    return "exam/add";
 	}
 	
@@ -87,6 +108,15 @@ public class ExamController {
 	    service.delete(id);
 	    
 	    return "redirect:/exam";
+	}
+	
+	@RequestMapping("/status/{id}")
+	public String showExamStatus(Model model,@PathVariable(name = "id") int id) {
+		Exam exam = service.get(id);
+		
+		model.addAttribute("exam", exam);
+		
+		return "exam/status";
 	}
 	
 	@GetMapping("/403")

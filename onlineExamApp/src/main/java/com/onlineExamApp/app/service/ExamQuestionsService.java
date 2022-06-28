@@ -21,7 +21,7 @@ public class ExamQuestionsService {
 	public List<ExamQuestions> listAll() {
         return repo.findAll();
     }
-     
+	 
     public void save(ExamQuestions exam_questions) {
         repo.save(exam_questions);
     }
@@ -37,5 +37,8 @@ public class ExamQuestionsService {
 	public List<ExamQuestions> listSearched(Search search) {
 		return repo.listSearched(search.getId());
 	}
-
+	
+	public List<ExamQuestions> listQuestionsAll(Integer examId) {
+        return repo.findByExam(examId);
+    }
 }
