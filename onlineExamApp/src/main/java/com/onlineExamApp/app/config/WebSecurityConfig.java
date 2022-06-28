@@ -48,6 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/exam/add/**").hasAuthority("TEACHER")
 				.antMatchers("/exam/delete/**").hasAuthority("TEACHER")
 				.antMatchers("/exam/edit/**").hasAnyAuthority("TEACHER")
+				.antMatchers("/exam/status/**").hasAnyAuthority("TEACHER")
 				.antMatchers("/exam/questions/**").hasAnyAuthority("TEACHER")
 				.anyRequest().authenticated()
 				.and()
