@@ -13,3 +13,32 @@ li.page-item.active a.page-link {
 .px-6 {
   padding-left: 43rem !important;
 }
+
+
+.btnPrev{	
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #ddd;
+  color: black;
+}
+
+.btnPrev:hover{
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+}
+
+.btnNext{	
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 30px;
+  background-color: #ddd;
+  color: black;
+}
+
+.btnNext:hover{
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+}

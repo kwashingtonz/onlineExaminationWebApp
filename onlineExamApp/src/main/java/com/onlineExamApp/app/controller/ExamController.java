@@ -118,6 +118,21 @@ public class ExamController {
 	    return "exam/enroll";
 	}
 	
+	@RequestMapping("/enroll/{id}/result")
+	public String resultExam(@AuthenticationPrincipal MyUserDetails user,Model model, @PathVariable(name = "id") int id) {
+
+		List<ExamQuestions> question = qservice.listQuestionsAll(id);
+		Exam exam = service.get(id);
+		
+		model.addAttribute("question", question);
+
+	    model.addAttribute("user", user);
+	    model.addAttribute("exam", exam);
+	    
+		
+	    return "exam/result";
+	}
+	
 	@RequestMapping(value="/delete/{id}")
 	public String delete(Model model,@PathVariable(name = "id") int id) {
 	    service.delete(id);
