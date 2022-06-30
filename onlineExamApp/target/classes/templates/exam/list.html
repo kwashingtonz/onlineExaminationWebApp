@@ -53,7 +53,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 				                <td sec:authorize="hasAnyAuthority('TEACHER')"><a th:text="${exam.name}" th:href="@{'/exam/edit/' + ${exam.id}}" ></a></td>				               
 				                <td sec:authorize="hasAnyAuthority('TEACHER')" th:text="${#dates.format(exam.lastUpdatedDate, 'yyyy-MMM-dd')}"></td>               				                				          				                
 				                <td sec:authorize="hasAnyAuthority('STUDENT')" th:text="${#dates.format(exam.startDateTime, 'yyyy-MMM-dd hh:mm a')}"></td>      
-				               	<td sec:authorize="hasAnyAuthority('STUDENT')" th:text="${exam.duration}"></td>      				             
+				               	<td sec:authorize="hasAnyAuthority('STUDENT')" th:text="${cservice.durationDis(exam.duration)}"></td>      				             			               				             
 				                <td sec:authorize="hasAnyAuthority('STUDENT')"><a id="examStudentStatus" th:text="Pending" th:href="@{'/exam/enroll/'+${exam.id}+'/result/'}"></a></td>				               
 				            	<td sec:authorize="hasAnyAuthority('TEACHER')"><a id="examTeacherStatus" th:text="Drafted" th:href="@{'/exam/status/' + ${exam.id}}"></a></td>				               
 				                
@@ -78,8 +78,10 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	<script type="text/javascript">
 		$('#examMenuItem').addClass('active');
 		
-		
 	</script>
+	
+	
+	
 	<footer lang="en" th:replace="common/footer :: footer"></footer>
 	<script th:src='@{/js/bootstrap-confirmation.min.js}'></script>
 	<script th:src="@{/js/confirmation-config.js}"></script>

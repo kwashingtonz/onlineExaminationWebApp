@@ -25,6 +25,9 @@
 				<p class="login-box-msg">Login by entering your credentials</p>
 				<span class="invalid-feedback"> <strong th:text="${error}"></strong>
 				</span>
+				<div th:if="${param.error}" class="alert alert-danger">    
+    				Invalid Email or Password.
+				</div>
 				<form method="POST" th:action="@{/login}">
 					<div class="form-group">
 						<input name="username" type="text" class="form-control"

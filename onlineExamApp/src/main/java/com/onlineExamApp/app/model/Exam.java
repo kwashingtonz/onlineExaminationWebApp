@@ -30,7 +30,7 @@ public class Exam {
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date endDateTime;
 	
-	private String duration;
+	private Integer duration;
 	
 		
     public Integer getId() {
@@ -91,11 +91,11 @@ public class Exam {
         this.endDateTime = endDateTime;
     }
 	
-	public String getDuration() {
+	public Integer getDuration() {
         return duration;
     }
 	
-	public void setDuration(String duration) {
+	public void setDuration(Integer duration) {
         this.duration = duration;
     }
 

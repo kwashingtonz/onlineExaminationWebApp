@@ -23,6 +23,7 @@ import com.onlineExamApp.app.model.Exam;
 import com.onlineExamApp.app.model.ExamQuestions;
 import com.onlineExamApp.app.model.Search;
 import com.onlineExamApp.app.model.SearchTeacher;
+import com.onlineExamApp.app.service.CalculationService;
 import com.onlineExamApp.app.service.ExamQuestionsService;
 import com.onlineExamApp.app.service.ExamService;
 import com.onlineExamApp.app.service.MyUserDetails;
@@ -38,6 +39,9 @@ public class ExamController {
 	@Autowired
 	private ExamQuestionsService qservice;
 	
+	@Autowired
+	private CalculationService cservice;
+	
 	@RequestMapping(value= "", method = { RequestMethod.GET, RequestMethod.POST })
 	public String list(@ModelAttribute(value = "search") Search search,SearchTeacher searchName,SearchTeacher searchTeacher,Model model, 
 			@PageableDefault(value = PaginatorHelper.DEFAULT_PAGINATION_SIZE, page = 0) Pageable pageable) {
@@ -46,17 +50,20 @@ public class ExamController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         authorities = auth.getAuthorities();
         String myRole = authorities.toArray()[0].toString();
+        
         List<Exam> exams;
         Page<Exam> page;
         if (myRole.equals("TEACHER")) {
     		exams = service.listTeacherSearched(searchName,searchTeacher);
-        }else { 	
+        }else {       	
         	exams = service.listSearched(search);
+        	
        }
         
         page=PaginatorHelper.pagiableList(exams, pageable);
 		model.addAttribute("exams", exams);
 		model.addAttribute("page", page);
+		model.addAttribute("cservice", cservice);
 		
         return "exam/list";	
 	}

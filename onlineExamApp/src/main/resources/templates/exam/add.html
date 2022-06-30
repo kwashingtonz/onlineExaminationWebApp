@@ -231,18 +231,7 @@
 			
 			var timeDiff = (toDate - fromDate);
 			
-			var days = (timeDiff/86400);
-			timeDiff -= days * 86400;
-			
-			var hours = (timeDiff/3600) % 24;
-			timeDiff -= hours * 3600;
-			
-			var minutes = (timeDiff/60) % 60;
-			timeDiff -= minutes * 60;
-			
-			var seconds = timeDiff % 60;
-			
-			var duration = days+" days "+hours+" hours "+minutes+" minutes "+seconds+" seconds";
+			var duration = timeDiff;
 			
 			document.getElementById("duration").value = duration;		
 			
