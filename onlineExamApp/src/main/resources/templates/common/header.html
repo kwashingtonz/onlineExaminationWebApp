@@ -3,9 +3,8 @@
 	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <nav th:fragment="header" class="navbar navbar-expand-lg navbar-dark bg-dark">
-	<div class="container">
-		<a style="color: white;" sec:authorize="hasAuthority('STUDENT')" class="navbar-brand">Online Examination System</a>		
-		<a sec:authorize="hasAuthority('TEACHER')" class="navbar-brand" th:href="@{/exam}">Online Examination System</a>
+	<div class="container">		
+		<a style="color: white;" class="navbar-brand">Online Examination System</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">

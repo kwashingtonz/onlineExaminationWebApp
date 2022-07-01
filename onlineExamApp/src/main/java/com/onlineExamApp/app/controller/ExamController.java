@@ -73,6 +73,7 @@ public class ExamController {
 	public String add(@AuthenticationPrincipal MyUserDetails user,@ModelAttribute(value = "search") Search search, Model model,
 			@PageableDefault(value = PaginatorHelper.DEFAULT_PAGINATION_SIZE, page = 0) Pageable pageable) {
 		Exam exam = new Exam();
+		ExamQuestions questions = new ExamQuestions();
 		int id = service.getLastIdAndNewId();
 		List<ExamQuestions> question = qservice.listQuestionsAll(id);
 		Page<ExamQuestions> page=PaginatorHelper.pagiableList(question, pageable);
@@ -81,6 +82,7 @@ public class ExamController {
 		
 		model.addAttribute("user", user);
 	    model.addAttribute("exam", exam);
+	    model.addAttribute("questions", questions);
 	    model.addAttribute("service",service);
 	    
 		return "exam/add";
