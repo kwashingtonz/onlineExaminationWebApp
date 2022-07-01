@@ -3,6 +3,7 @@ package com.onlineExamApp.app.controller;
 import java.util.Collection;
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -72,16 +73,24 @@ public class ExamController {
 	public String add(@AuthenticationPrincipal MyUserDetails user,@ModelAttribute(value = "search") Search search, Model model,
 			@PageableDefault(value = PaginatorHelper.DEFAULT_PAGINATION_SIZE, page = 0) Pageable pageable) {
 		Exam exam = new Exam();
-		
-		List<ExamQuestions> question = qservice.listSearched(search);
+		int id = service.getLastIdAndNewId();
+		List<ExamQuestions> question = qservice.listQuestionsAll(id);
 		Page<ExamQuestions> page=PaginatorHelper.pagiableList(question, pageable);
 		model.addAttribute("question", question);
 		model.addAttribute("page", page);
 		
 		model.addAttribute("user", user);
 	    model.addAttribute("exam", exam);
+	    model.addAttribute("service",service);
 	    
 		return "exam/add";
+	}
+	
+	@RequestMapping(value = "/qsave", method = RequestMethod.POST)
+	public String saveQuestion(@ModelAttribute("question") ExamQuestions question) {
+		qservice.save(question);
+		
+		return "redirect:/exam/add";
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -107,7 +116,7 @@ public class ExamController {
 	    model.addAttribute("exam", exam);
 	    
 		
-	    return "exam/add";
+	    return "exam/edit";
 	}
 	
 	@RequestMapping("/enroll/{id}")

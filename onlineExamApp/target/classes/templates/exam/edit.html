@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-
 <head lang="en" th:replace="common/head :: head"></head>
 <body>
 
@@ -20,7 +19,7 @@
 			  <td>
 			  <form onsubmit="calculateDuration()" th:action="@{/exam/save}" th:object="${exam}" method="post" class="need-validated">
 			  
-			  <input type="hidden" th:value="${service.getLastIdAndNewId()}" th:id="id" th:name="id">
+			  <input type="hidden" th:field="*{id}">
 			  
 			    <div class="form-group">
 			      <label for="name">Exam Name:</label>
@@ -129,10 +128,9 @@
 			 	
 			 	<td width="375px" height="100%" id="addQuestion" >
 			 		<div class="container">
-			  		<form onsubmit="getCorrectAnswer()" th:action="@{/exam/qsave}" th:object="${question}" method="post" class="need-validated">
+			  		<form th:action="@{/questions/save}" th:object="${question}" method="post" class="need-validated">
 			  			<div class="form-group">
 			      			<label for="question">Question:</label>
-			     	 		 <input type="hidden" th:value="${service.getLastIdAndNewId()}" th:id="examId" th:name="examId">
 			     	 		<input type="text" class="form-control" id="question" placeholder="Enter Question" th:name="question" th:id="question" required>
 			    		</div>			  		
 			  			<div class="form-group">
@@ -140,12 +138,12 @@
 			    		 	<table>
 			     	 			<tr>
 			     	 				<td>
-			    		 				<input type="text" class="form-control" id="answerone" placeholder="Enter Answer 1" th:name="answer1" th:id="answer1" required>
+			    		 				<input type="text" class="form-control" id="answer1" placeholder="Enter Answer 1" th:name="answer1" th:id="answer1" required>
 			    					</td>
 			    					<td width="5px">
 			    					</td>
 			    					<td>
-			    						<input type="radio" id="ans1" name="answers" required>
+			    						<input type="radio" id="ans1" name="correctAnswer" required>
 			     	  					<label for="ans1">Correct Answer</label>
 			     	  				</td>
 			     	  			</tr>
@@ -156,13 +154,13 @@
 			     	 		<table>
 			     	 			<tr>
 			     	 				<td>
-			     	 					<input type="text" class="form-control" id="answertwo" placeholder="Enter Answer 2" th:name="answer2" th:id="answer2" required>
+			     	 					<input type="text" class="form-control" id="answer2" placeholder="Enter Answer 2" th:name="answer2" th:id="answer2" required>
 			    					</td>
 			    					
 			    					<td width="5px">
 			    					</td>
 			    					<td>
-			     	  					<input type="radio" id="ans2" name="answers">
+			     	  					<input type="radio" id="ans2" name="correctAnswer">
 			     	  					<label for="ans2">Correct Answer</label>
 			     	  				</td>
 			     	  			</tr>
@@ -173,13 +171,13 @@
 			  			<table>
 			     	 		<tr>
 			     	 			<td>
-			     	 				<input type="text" class="form-control" id="answerthree" placeholder="Enter Answer 3" th:name="answer3" th:id="answer3" required>
+			     	 				<input type="text" class="form-control" id="answer3" placeholder="Enter Answer 3" th:name="answer3" th:id="answer3" required>
 			    				</td>
 			    				
 			    					<td width="5px">
 			    					</td>
 			    				<td>
-			     	  				<input type="radio" id="ans3" name="answers">
+			     	  				<input type="radio" id="ans3" name="correctAnswer">
 			     	  				<label for="ans3">Correct Answer</label>
 			     	  		
 			     	 			</td>
@@ -191,24 +189,24 @@
 			     	 	<table>
 			     	 		<tr>
 			     	 			<td>
-			     	 				<input type="text" class="form-control" id="answerfour" placeholder="Enter Answer 4" th:name="answer4" th:id="answer4" required>
+			     	 				<input type="text" class="form-control" id="answer4" placeholder="Enter Answer 4" th:name="answer4" th:id="answer4" required>
 			    				</td>
 			    				
 			    					<td width="5px">
 			    					</td>
 			    				<td>
-			     	  				<input type="radio" id="ans4" name="answers">
+			     	  				<input type="radio" id="ans4" name="correctAnswer">
 			     	  				<label for="ans4">Correct Answer</label>
 			    				</td>
 			    			</tr>
 			    		</table>
 			    	</div>			  		
 			     	  	
-			     	<input type="hidden" id="cA" th:name="correctAnswer" th:id="correctAnswer">			 		 		  		
+			     	  <input hidden="hidden" id="correctAnswer" type="text" th:id="correctAnswer" th:name="correctAnswer">			 			 		 		  		
 			  			  	
-			 		<button type="submit" class="btn btn-primary">Save</button>			 	
-				</form>
-				</div>  
+			 		<button type="submit" class="btn btn-primary" onsubmit="addQuestionSubmit()" >Save</button>			 	
+			 		</form>
+					</div>  
 			 	</td>
 			 	</tr>
 			 	</table>
@@ -252,30 +250,35 @@
 			  
 		}
 		
-		function getCorrectAnswer(){
+		function addQuestionSubmit(){
 			
-			if(document.getElementById("ans1").checked){
-				
-				document.getElementById("cA").value = document.getElementById("answerone").value;
+			if(document.getElementById("ans1").checked == true){
+				var a = document.getElementById("answer1").value;
+				document.getElementById("correctAnswer").value=a;
 			}
-			else if(document.getElementById("ans2").checked){
-								
-				document.getElementById("cA").value = document.getElementById("answertwo").value; 
-				
-			}else if(document.getElementById("ans3").checked){
-				
-				document.getElementById("cA").value = document.getElementById("answerthree").value;
-				
-			}else if(document.getElementById("ans4").checked){
-				
-				document.getElementById("cA").value = document.getElementById("answerfour").value;
+			if(document.getElementById("ans2").checked == true){
+				var b = document.getElementById("answer2").value;					
+				document.getElementById("correctAnswer").value=b;
+			}
+			if(document.getElementById("ans3").checked == true){
+				var c = document.getElementById("answer3").value;
+				document.getElementById("correctAnswer").value=c;
+			}
+			if(document.getElementById("ans4").checked == true){
+				var d = document.getElementById("answer4").value;
+				document.getElementById("correctAnswer").value=d;
 			}
 			
-			return true; 
+			
+			var x = document.getElementById("addQuestion");
+			  if (x.style.display === "block")
+			    x.style.display = "none";
+			  
+			  return true;
+			  
 		}
-			
+		
 	</script>
-	
 	<footer lang="en" th:replace="common/footer :: footer"></footer>
 	<script th:src='@{/js/bootstrap-confirmation.min.js}'></script>
 	<script th:src="@{/js/confirmation-config.js}"></script>

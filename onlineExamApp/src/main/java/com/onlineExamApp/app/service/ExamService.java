@@ -42,5 +42,10 @@ public class ExamService {
 	public List<Exam> listTeacherSearched(SearchTeacher searchName,SearchTeacher searchTeacher) {
 		return repo.listTeacherSearched(searchTeacher.getName(),searchTeacher.getAddedBy());
 	}
+	
+	public Integer getLastIdAndNewId() {
+		return repo.getLastId()+1;
+	}
+	
 
 }

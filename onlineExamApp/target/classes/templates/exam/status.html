@@ -36,8 +36,8 @@
 			  						</td>
 			  					</tr>
 			  					<tr>
-			  						<td style="padding-bottom:15px; padding-left:150px;" colspan="3" height="50px">
-			  							Time Left :
+			  						<td style="padding-bottom:0px; padding-left:150px;" colspan="3" height="50px">
+			  							<p id="timeLeft"></p>
 			  						</td>
 			  					</tr>
 			  				</table>	
@@ -52,9 +52,9 @@
 			  			</td>	  			
 			  		</tr>
 			  		<tr>
-			  			<td style="border: 1px solid #dee2e6; padding-bottom:50px; padding-left:10px;" height="50%">
-			  				Exam Started Time : <br><br>
-			  				Exam Ending Time :
+			  			<td style="border: 1px solid #dee2e6; padding-bottom:40px; padding-left:10px;" height="50%">
+			  				<p th:text="'Exam Started Time : '+${exam.startDateTime}"></p><br>
+			  				<p id="endDT" th:text="'Exam Ending Time : '+${exam.endDateTime}"></p>
 			  			</td> 			
 			  		</tr>
 			  		<tr>
@@ -67,6 +67,34 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		var countDownDate = new Date(document.getElementById('endDT').textContent).getTime();
+		
+				var x = setInterval(function() {
+
+			  // Get today's date and time
+			  var now = new Date().getTime();
+
+			  // Find the distance between now and the count down date
+			  var distance = countDownDate - now;
+
+			  // Time calculations for days, hours, minutes and seconds
+			  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+			  // Display the result in the element with id="demo"
+			  document.getElementById("timeLeft").innerHTML = "Time Left : " + days + "d " + hours + "h "
+			  + minutes + "m " + seconds + "s ";
+
+			  // If the count down is finished, write some text
+			  if (distance < 0) {
+			    clearInterval(x);
+			    document.getElementById("timeLeft").innerHTML = "Time Left : EXPIRED";
+			  }
+			}, 1000);
+	</script>
 	<script type="text/javascript">
 		$('#statusMenuItem').addClass('active');
 		
