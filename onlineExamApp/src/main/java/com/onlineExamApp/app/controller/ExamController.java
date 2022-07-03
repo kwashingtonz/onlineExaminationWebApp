@@ -92,7 +92,18 @@ public class ExamController {
 	public String saveQuestion(@ModelAttribute("question") ExamQuestions question) {
 		qservice.save(question);
 		
+		
 		return "redirect:/exam/add";
+	}
+	
+	@RequestMapping(value = "/editqsave", method = RequestMethod.POST)
+	public String saveEditQuestion(@ModelAttribute("question") ExamQuestions question) {
+		Integer exId = question.getExamId();
+	    String eid = Integer.toString(exId);
+		
+		qservice.save(question);
+		
+		return  "redirect:/exam/edit/"+eid;
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -109,6 +120,8 @@ public class ExamController {
 		List<ExamQuestions> question = qservice.listQuestionsAll(id);
 		Page<ExamQuestions> page=PaginatorHelper.pagiableList(question, pageable);
 		Exam exam = service.get(id);
+		ExamQuestions questions = new ExamQuestions();
+		
 		
 		model.addAttribute("question", question);
 		model.addAttribute("page", page); 
@@ -116,6 +129,8 @@ public class ExamController {
 
 	    model.addAttribute("user", user);
 	    model.addAttribute("exam", exam);
+	    model.addAttribute("questions", questions);
+	    
 	    
 		
 	    return "exam/edit";
@@ -156,6 +171,22 @@ public class ExamController {
 	    service.delete(id);
 	    
 	    return "redirect:/exam";
+	}
+	
+	@RequestMapping("/questions/adddelete/{id}")
+	public String deleteAddQuestion(Model model,@PathVariable(name = "id") int id) {
+		qservice.delete(id);
+	    
+	    return "redirect:/exam/add/";
+	}
+	
+	@RequestMapping("/questions/editdelete/{id}")
+	public String deleteEditQuestion(Model model,@PathVariable(name = "id") int id) {
+	    Integer exId = qservice.get(id).getExamId();
+	    String eid = Integer.toString(exId);
+		qservice.delete(id);
+	    
+	    return "redirect:/exam/edit/"+eid;
 	}
 	
 	@RequestMapping("/status/{id}")

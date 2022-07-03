@@ -17,6 +17,7 @@
 			  <table>
 			  <tr>
 			  <td>
+			  <div class="container">
 			  <form onsubmit="calculateDuration()" th:action="@{/exam/save}" th:object="${exam}" method="post" class="need-validated">
 			  
 			  <input type="hidden" th:field="*{id}">
@@ -71,10 +72,8 @@
 				                <td th:text="${question.answer4}"></td>				               
 				                <td th:text="${question.correctAnswer}"></td>				                 				             
 				                <td>
-				                    <button class="btn btn-sm btn-warning" 
-										th:href="@{'/questions/edit/' + ${question.queId}}" data-toggle="confirmation" data-singleton="true"> Edit</button>
 									<button class="btn btn-sm btn-danger" 
-										th:href="@{'/questions/delete/' + ${question.queId}}" data-toggle="confirmation" data-singleton="true"> Delete</button>
+										th:href="@{'/exam/questions/editdelete/' + ${question.queId}}" data-toggle="confirmation" data-singleton="true"> Delete</button>
 				                </td>
 			            	</tr>
 			            </th:block>
@@ -111,7 +110,7 @@
 			 	<table class="table-responsive">
 			 	<tr>
 			 	<td>
-			 	<button type="submit" class="btn btn-primary">Submit</button>
+			 	<button type="submit" class="btn btn-primary">Save Exam</button>
 			 	</td>
 			 	<td width="10px" background="white">
 			 	</td>
@@ -121,92 +120,97 @@
 			 	</tr>
 			 	</table>
 			 	</form>
+			 	</div>
 			 	</td>
 			 	
 			 	<td width=5px background='white'>
 			 	</td>
 			 	
 			 	<td width="375px" height="100%" id="addQuestion" >
-			 		<div class="container">
-			  		<form th:action="@{/questions/save}" th:object="${question}" method="post" class="need-validated">
-			  			<div class="form-group">
-			      			<label for="question">Question:</label>
-			     	 		<input type="text" class="form-control" id="question" placeholder="Enter Question" th:name="question" th:id="question" required>
-			    		</div>			  		
-			  			<div class="form-group">
-			  				<label for="answer1">Answer 1:</label>
-			    		 	<table>
-			     	 			<tr>
-			     	 				<td>
-			    		 				<input type="text" class="form-control" id="answer1" placeholder="Enter Answer 1" th:name="answer1" th:id="answer1" required>
-			    					</td>
-			    					<td width="5px">
-			    					</td>
-			    					<td>
-			    						<input type="radio" id="ans1" name="correctAnswer" required>
-			     	  					<label for="ans1">Correct Answer</label>
-			     	  				</td>
-			     	  			</tr>
-			     	  		</table>
-			    		</div>			  		
-			  			<div class="form-group">
-			  				<label for="answer2">Answer 2:</label>
-			     	 		<table>
-			     	 			<tr>
-			     	 				<td>
-			     	 					<input type="text" class="form-control" id="answer2" placeholder="Enter Answer 2" th:name="answer2" th:id="answer2" required>
-			    					</td>
-			    					
-			    					<td width="5px">
-			    					</td>
-			    					<td>
-			     	  					<input type="radio" id="ans2" name="correctAnswer">
-			     	  					<label for="ans2">Correct Answer</label>
-			     	  				</td>
-			     	  			</tr>
-			     	  		</table>	
-			    	</div>			  		
-			  		<div class="form-group">
-			  			<label for="answer3">Answer 3:</label>
-			  			<table>
-			     	 		<tr>
-			     	 			<td>
-			     	 				<input type="text" class="form-control" id="answer3" placeholder="Enter Answer 3" th:name="answer3" th:id="answer3" required>
-			    				</td>
-			    				
-			    					<td width="5px">
-			    					</td>
-			    				<td>
-			     	  				<input type="radio" id="ans3" name="correctAnswer">
-			     	  				<label for="ans3">Correct Answer</label>
-			     	  		
-			     	 			</td>
-			     	 		</tr>
-			    		</table>
-			    	</div>			  		
-			  		<div class="form-group">
-			  			<label for="answer4">Answer 4:</label>
-			     	 	<table>
-			     	 		<tr>
-			     	 			<td>
-			     	 				<input type="text" class="form-control" id="answer4" placeholder="Enter Answer 4" th:name="answer4" th:id="answer4" required>
-			    				</td>
-			    				
-			    					<td width="5px">
-			    					</td>
-			    				<td>
-			     	  				<input type="radio" id="ans4" name="correctAnswer">
-			     	  				<label for="ans4">Correct Answer</label>
-			    				</td>
-			    			</tr>
-			    		</table>
-			    	</div>			  		
-			     	  	
-			     	  <input hidden="hidden" id="correctAnswer" type="text" th:id="correctAnswer" th:name="correctAnswer">			 			 		 		  		
-			  			  	
-			 		<button type="submit" class="btn btn-primary" onsubmit="addQuestionSubmit()" >Save</button>			 	
-			 		</form>
-					</div>  
+			 							<div class="container">
+			  							
+			  							<form  th:onsubmit="getCorrectAnswer()" th:action="@{/exam/editqsave}" th:object="${questions}" method="post" class="need-validated">
+								  			<div class="form-group">
+								      			<label for="question">Question:</label>
+								      			<div th:object="${exam}">
+								      				<input type="hidden" th:value="${exam.id}" th:id="examId" th:name="examId">
+								      			</div>
+								     	 		 <input type="text" class="form-control" id="question" placeholder="Enter Question" th:name="question" th:id="question" required>
+								    		</div>			  		
+								  			<div class="form-group">
+								  				<label for="answer1">Answer 1:</label>
+								    		 	<table>
+								     	 			<tr>
+								     	 				<td>
+								    		 				<input type="text" class="form-control" id="firstAnswer" placeholder="Enter Answer 1" th:field="*{answer1}" required>
+								    				
+								    					</td>
+								    					<td width="5px">
+								    					</td>
+								    					<td>
+								    						<input type="radio" id="radio1" name="answers" required>
+								     	  					<label for="radio1">Correct Answer</label>
+								     	  				</td>
+								     	  			</tr>
+								     	  		</table>
+								    		</div>			  		
+								  			<div class="form-group">
+								  				<label for="answer2">Answer 2:</label>
+								     	 		<table>
+								     	 			<tr>
+								     	 				<td>
+								     	 					<input type="text" class="form-control" id="secondAnswer" placeholder="Enter Answer 2" th:field="*{answer2}" required>
+								    					</td>
+								    					
+								    					<td width="5px">
+								    					</td>
+								    					<td>
+								     	  					<input type="radio" id="radio2" name="answers">
+								     	  					<label for="radio2">Correct Answer</label>
+								     	  				</td>
+								     	  			</tr>
+								     	  		</table>	
+								    		</div>			  		
+									  		<div class="form-group">
+									  			<label for="answer3">Answer 3:</label>
+									  			<table>
+									     	 		<tr>
+									     	 			<td>
+									     	 				<input type="text" class="form-control" id="thirdAnswer" placeholder="Enter Answer 3" th:field="*{answer3}" required>
+									    				</td>
+									    				
+									    					<td width="5px">
+									    					</td>
+									    				<td>
+									     	  				<input type="radio" id="radio3" name="answers">
+									     	  				<label for="radio3">Correct Answer</label>
+									     	  		
+									     	 			</td>
+									     	 		</tr>
+									    		</table>
+									    	</div>			  		
+									  		<div class="form-group">
+									  			<label for="answer4">Answer 4:</label>
+									     	 	<table>
+									     	 		<tr>
+									     	 			<td>
+									     	 				<input type="text" class="form-control" id="fourthAnswer" placeholder="Enter Answer 4" th:field="*{answer4}" required>
+									    				</td>
+									    				
+									    					<td width="5px">
+									    					</td>
+									    				<td>
+									     	  				<input type="radio" id="radio4" name="answers">		     	  					
+									     	  				<label for="radio4">Correct Answer</label>
+									     	  			</td>
+									    			</tr>
+									    		</table>
+									    	</div>			  		
+			     	 	  					<input type="hidden" class="form-control" id="correctAnswer" th:name="correctAnswer" th:id="correctAnswer">	
+									    			
+			 								<button type="submit" class="btn btn-primary">Save</button>			 	
+										</form>
+									</div>
 			 	</td>
 			 	</tr>
 			 	</table>
@@ -280,6 +284,7 @@
 		
 	</script>
 	<footer lang="en" th:replace="common/footer :: footer"></footer>
+	<script th:src='@{/js/cAnswer.js}'></script>
 	<script th:src='@{/js/bootstrap-confirmation.min.js}'></script>
 	<script th:src="@{/js/confirmation-config.js}"></script>
 </body>

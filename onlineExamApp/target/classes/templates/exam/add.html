@@ -73,10 +73,8 @@
 										                <td th:text="${question.answer4}"></td>				               
 										                <td th:text="${question.correctAnswer}"></td>				                 				             
 										                <td>
-										                    <button class="btn btn-sm btn-warning" 
-																th:href="@{'/questions/edit/' + ${question.queId}}" data-toggle="confirmation" data-singleton="true"> Edit</button>
 															<button class="btn btn-sm btn-danger" 
-																th:href="@{'/questions/delete/' + ${question.queId}}" data-toggle="confirmation" data-singleton="true"> Delete</button>
+																th:href="@{'/exam/questions/adddelete/' + ${question.queId}}" data-toggle="confirmation" data-singleton="true"> Delete</button>
 										                </td>
 			            							</tr>
 			           							</th:block>
@@ -113,7 +111,7 @@
 			 						<table class="table-responsive">
 									 	<tr>
 										 	<td>
-										 		<button type="submit" class="btn btn-primary">Submit</button>
+										 		<button type="submit" class="btn btn-primary">Save Exam</button>
 										 	</td>
 										 	<td width="10px" background="white">
 										 	</td>
