@@ -236,6 +236,7 @@ public class ExamController {
 		Exam exam = service.get(id);
 		
 		model.addAttribute("exam", exam);
+		model.addAttribute("uservice",uservice);
 		
 		return "exam/status";
 	}

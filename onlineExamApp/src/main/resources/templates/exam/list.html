@@ -12,7 +12,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 			  <ol class="breadcrumb">
 			    <li class="breadcrumb-item"><a th:href="@{/exam}">Exam</a></li>
 			    <li class="breadcrumb-item active" aria-current="page">Exam List</li>
-			    <li class="ml-auto" sec:authorize="hasAnyAuthority('TEACHER')"> <a class="btn btn-sm btn-primary btn-block" th:href="@{/exam/add}"> Add Exam </a> </li> 
+			    <li class="ml-auto" sec:authorize="hasAnyAuthority('TEACHER')"> <a class="btn btn-sm btn-primary btn-block" th:href="@{/exam/add}" onclick="clearSes()"> Add Exam </a> </li> 
 					
 			  </ol>
 			</nav>
@@ -55,7 +55,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 				                <td sec:authorize="hasAnyAuthority('STUDENT')" th:text="${#dates.format(exam.startDateTime, 'yyyy-MMM-dd hh:mm a')}"></td>      
 				               	<td sec:authorize="hasAnyAuthority('STUDENT')" th:text="${cservice.durationDis(exam.duration)}"></td>      				             			               				             
 				                <td sec:authorize="hasAnyAuthority('STUDENT')"><a id="examStudentStatus" th:text="Pending" th:href="@{'/exam/enroll/'+${exam.id}+'/result/'}"></a></td>				               
-				            	<td sec:authorize="hasAnyAuthority('TEACHER')"><a id="examTeacherStatus" th:text="${extservice.examStatus(exam.id)}" th:href="@{'/exam/status/' + ${exam.id}}"></a></td>				               
+				            	<td sec:authorize="hasAnyAuthority('TEACHER')"><a class="exts" id="examTeacherStatus" th:text="${extservice.examStatus(exam.id)}" th:href="@{'/exam/status/' + ${exam.id}}"></a></td>				               
 				                
 				                <td sec:authorize="hasAnyAuthority('TEACHER')">
 				        
@@ -77,6 +77,24 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	</div>
 	<script type="text/javascript">
 		$('#examMenuItem').addClass('active');
+		
+		var elements = document.getElementsByClassName("exts");
+		
+		for(var e = 0; e < elements.length; e++) { // For each element
+			   var element = elements[e];
+			
+				var stat = element.innerHTML;
+				
+				if (stat != "PUBLISHED"){
+					if(stat != "FINISHED"){
+						element.removeAttribute("href");
+					}	
+				}
+			}
+		
+		function clearSes(){
+			sessionStorage.clear();
+		}
 		
 	</script>
 	

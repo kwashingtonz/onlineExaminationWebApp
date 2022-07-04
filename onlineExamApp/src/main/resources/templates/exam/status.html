@@ -31,12 +31,19 @@
 			  					</tr>
 			  						
 			  					<tr>
-			  						<td colspan="3" height="150px">
-			  							<!-- Out of 10/50 text -->
+			  						<td style="font-size:60px;" align="center" colspan="3" height="150px">
+			  							<table>
+			  								<tr>
+			  									<td><p></p></td>
+			  									<td><p>/</p></td>
+			  									<td><p th:text="${uservice.getCountStudents()}"></p></td>
+			  								</tr>
+			  							</table>
+			  							
 			  						</td>
 			  					</tr>
 			  					<tr>
-			  						<td style="padding-bottom:0px; padding-left:150px;" colspan="3" height="50px">
+			  						<td style="padding-bottom:0px;" align="center" colspan="3" height="50px">
 			  							<p id="timeLeft"></p>
 			  						</td>
 			  					</tr>
@@ -53,8 +60,8 @@
 			  		</tr>
 			  		<tr>
 			  			<td style="border: 1px solid #dee2e6; padding-bottom:40px; padding-left:10px;" height="50%">
-			  				<p th:text="'Exam Started Time : '+${exam.startDateTime}"></p><br>
-			  				<p id="endDT" th:text="'Exam Ending Time : '+${exam.endDateTime}"></p>
+			  				<p th:text="'Exam Started Time : '+${#dates.format(exam.startDateTime,'yyyy-MM-dd HH:mm:ss')}"></p><br>
+			  				<p id="endDT" th:text="'Exam Ending Time : '+${#dates.format(exam.endDateTime,'yyyy-MM-dd HH:mm:ss')}"></p>
 			  			</td> 			
 			  		</tr>
 			  		<tr>

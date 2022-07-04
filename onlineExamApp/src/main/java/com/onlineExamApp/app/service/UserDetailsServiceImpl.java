@@ -34,6 +34,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		Integer uid = userRepository.getIdByName(uname);
 		return uid;
 	}
+	
+	public Integer getCountStudents() {
+		
+		Integer count = userRepository.getCountStudents();
+		
+		return count;
+	}
 
 }
 

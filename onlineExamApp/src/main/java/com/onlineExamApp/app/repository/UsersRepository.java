@@ -13,4 +13,8 @@ public interface UsersRepository extends JpaRepository<Users, Integer>{
 	
 	@Query("SELECT id FROM Users WHERE name LIKE %:name%")
 	public Integer getIdByName(@Param("name") String name);
+	
+	@Query(value="SELECT COUNT(id) FROM Users u LEFT JOIN users_roles r ON u.id = r.user_id WHERE r.role_id = '2'",nativeQuery=true)
+	public Integer getCountStudents();
+	
 }
