@@ -2,6 +2,7 @@ package com.onlineExamApp.app.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -15,4 +16,10 @@ public interface ExamQuestionsRepository extends JpaRepository<ExamQuestions, In
 	@Query("SELECT a FROM ExamQuestions a WHERE a.examId = ?1 order by a.queId desc")
 	List<ExamQuestions> findByExam(@Param("examId") Integer examId);
 	
+	@Query("SELECT COUNT(q) FROM ExamQuestions q WHERE q.examId = ?1")
+	public Integer countQuestions(@Param("examId")Integer examId);
+	
+	@Modifying
+    @Query("DELETE FROM ExamQuestions e where e.examId = ?1")
+    void deleteByExamId(@Param("examId")Integer examId);
 }

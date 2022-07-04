@@ -10,4 +10,7 @@ public interface UsersRepository extends JpaRepository<Users, Integer>{
 
 	@Query("SELECT u FROM Users u WHERE u.email LIKE %:email%")
 	Users findByEmail(@Param("email") String email);
+	
+	@Query("SELECT id FROM Users WHERE name LIKE %:name%")
+	public Integer getIdByName(@Param("name") String name);
 }

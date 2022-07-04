@@ -32,14 +32,12 @@ public class CalculationService {
 			dDisplay ="";
 		}
 		
-		if(h>0) {
+		if(h>=0) {
 			if(h==1) {
 				hDisplay = Integer.toString(h) + " hour ";
 			}else {
 				hDisplay = Integer.toString(h) + " hours ";
 			}
-		}else {
-		hDisplay ="";
 		}
 		
 		if(m>=0) {

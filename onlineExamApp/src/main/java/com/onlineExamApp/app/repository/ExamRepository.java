@@ -20,4 +20,7 @@ public interface ExamRepository extends JpaRepository<Exam, Integer>{
 	
 	@Query(value = lastExamId, nativeQuery = true)
 	Integer getLastId();
+	
+	@Query(value= "SELECT * FROM Exam i LEFT JOIN exam_teachers_status e ON i.id = e.exam_id WHERE e.publish_status LIKE 'PUBLISHED' AND i.name LIKE  %:name%  order by i.id desc", nativeQuery = true)
+	List<Exam> listPublishedSearched(@Param("name")String name);
 }

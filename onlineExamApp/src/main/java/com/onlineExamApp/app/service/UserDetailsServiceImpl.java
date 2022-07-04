@@ -27,6 +27,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		
 		return new MyUserDetails(users);
 	}
+	
+	
+	public Integer getIdByName(String uname) {
+		
+		Integer uid = userRepository.getIdByName(uname);
+		return uid;
+	}
 
 }
 

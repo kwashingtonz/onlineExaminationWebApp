@@ -27,7 +27,9 @@ import com.onlineExamApp.app.model.SearchTeacher;
 import com.onlineExamApp.app.service.CalculationService;
 import com.onlineExamApp.app.service.ExamQuestionsService;
 import com.onlineExamApp.app.service.ExamService;
+import com.onlineExamApp.app.service.ExamTeachersStatusService;
 import com.onlineExamApp.app.service.MyUserDetails;
+import com.onlineExamApp.app.service.UserDetailsServiceImpl;
 import com.onlineExamApp.app.util.PaginatorHelper;
 
 @Controller
@@ -43,6 +45,13 @@ public class ExamController {
 	@Autowired
 	private CalculationService cservice;
 	
+	@Autowired
+	private UserDetailsServiceImpl uservice;
+	
+	@Autowired 
+	private ExamTeachersStatusService extservice;
+	
+	
 	@RequestMapping(value= "", method = { RequestMethod.GET, RequestMethod.POST })
 	public String list(@ModelAttribute(value = "search") Search search,SearchTeacher searchName,SearchTeacher searchTeacher,Model model, 
 			@PageableDefault(value = PaginatorHelper.DEFAULT_PAGINATION_SIZE, page = 0) Pageable pageable) {
@@ -57,7 +66,7 @@ public class ExamController {
         if (myRole.equals("TEACHER")) {
     		exams = service.listTeacherSearched(searchName,searchTeacher);
         }else {       	
-        	exams = service.listSearched(search);
+        	exams = service.listPublishedSearched(search);
         	
        }
         
@@ -65,6 +74,7 @@ public class ExamController {
 		model.addAttribute("exams", exams);
 		model.addAttribute("page", page);
 		model.addAttribute("cservice", cservice);
+		model.addAttribute("extservice",extservice);
 		
         return "exam/list";	
 	}
@@ -84,6 +94,7 @@ public class ExamController {
 	    model.addAttribute("exam", exam);
 	    model.addAttribute("questions", questions);
 	    model.addAttribute("service",service);
+	    model.addAttribute("qservice",qservice);
 	    
 		return "exam/add";
 	}
@@ -106,9 +117,20 @@ public class ExamController {
 		return  "redirect:/exam/edit/"+eid;
 	}
 	
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	@RequestMapping(value = "/save", method = RequestMethod.POST, params="save")
 	public String save(@ModelAttribute("exam") Exam exam) {
 	    service.save(exam);
+	    
+	    extservice.addSave(uservice.getIdByName(exam.getAddedBy()), exam.getId());
+	     
+	    return "redirect:/exam";
+	}
+	
+	@RequestMapping(value = "/save", method = RequestMethod.POST, params="publish")
+	public String publish(@ModelAttribute("exam") Exam exam) {
+	    service.save(exam);
+	    
+	    extservice.addPublish(uservice.getIdByName(exam.getAddedBy()), exam.getId());
 	     
 	    return "redirect:/exam";
 	}
@@ -130,10 +152,28 @@ public class ExamController {
 	    model.addAttribute("user", user);
 	    model.addAttribute("exam", exam);
 	    model.addAttribute("questions", questions);
-	    
+	    model.addAttribute("qservice",qservice);
 	    
 		
 	    return "exam/edit";
+	}
+	
+	@RequestMapping(value = "/save", method = RequestMethod.POST, params="editsave")
+	public String editsave(@ModelAttribute("exam") Exam exam) {
+	    service.save(exam);
+	    
+	    extservice.editSave(exam.getId());
+	     
+	    return "redirect:/exam";
+	}
+	
+	@RequestMapping(value = "/save", method = RequestMethod.POST, params="editpublish")
+	public String editpublish(@ModelAttribute("exam") Exam exam) {
+	    service.save(exam);
+	    
+	    extservice.editPublish(exam.getId());
+	     
+	    return "redirect:/exam";
 	}
 	
 	@RequestMapping("/enroll/{id}")
@@ -169,6 +209,8 @@ public class ExamController {
 	@RequestMapping(value="/delete/{id}")
 	public String delete(Model model,@PathVariable(name = "id") int id) {
 	    service.delete(id);
+	    extservice.deleteByExamId(id);
+	    qservice.deleteByExamId(id);
 	    
 	    return "redirect:/exam";
 	}

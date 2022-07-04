@@ -39,12 +39,26 @@ public class ExamService {
 		return repo.listSearched(search.getName());
 	}
 	
+	public List<Exam> listPublishedSearched(Search search){
+		return repo.listPublishedSearched(search.getName());
+	}
+	
 	public List<Exam> listTeacherSearched(SearchTeacher searchName,SearchTeacher searchTeacher) {
 		return repo.listTeacherSearched(searchTeacher.getName(),searchTeacher.getAddedBy());
 	}
 	
 	public Integer getLastIdAndNewId() {
-		return repo.getLastId()+1;
+		
+		Integer newid;
+		
+		if(repo.getLastId()==null){
+			newid=1;
+		}
+		else {
+			newid=repo.getLastId()+1;
+		}
+		
+		return newid;
 	}
 	
 

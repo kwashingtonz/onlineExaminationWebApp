@@ -28,7 +28,8 @@
 			      						<input type="text" class="form-control" id="name" placeholder="Enter Exam name" th:field="*{name}" required>
 			    					</div>			  			      
 			      					<input hidden="hidden" id="addedBy" type="text" th:value="${user.name}" th:id="addedBy" th:name="addedBy">			 			 		 
-			      					<input id=lastUpdatedDate type="hidden" th:field="*{lastUpdatedDate}">			 			 		 
+			      					<input id=lastUpdatedDate type="hidden" th:field="*{lastUpdatedDate}">
+			      					<input type="hidden" th:value="${qservice.countQuestions(service.getLastIdAndNewId())}" th:id="noQue" th:name="noQue">			 			 		 
 			     
 			    					<div class="table-responsive">
 			    						<div class="table-responsive">
@@ -111,12 +112,12 @@
 			 						<table class="table-responsive">
 									 	<tr>
 										 	<td>
-										 		<button type="submit" class="btn btn-primary">Save Exam</button>
+										 		<button type="submit" class="btn btn-primary" name="save" value="save">Save Exam</button>
 										 	</td>
 										 	<td width="10px" background="white">
 										 	</td>
 										 	<td>
-										 		<button class="btn btn-primary btn-block" th:href="@{/exam}"> Publish Exam </button>	
+										 		<button type="submit" class="btn btn-primary btn-block" name="publish" value="publish"> Publish Exam </button>	
 										 	</td>
 									 	</tr>
 			 						</table>

@@ -2,8 +2,7 @@ package com.onlineExamApp.app.model;
 
 import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
 import javax.persistence.Id;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -12,8 +11,7 @@ public class Exam {
 	
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+    private Integer id;
 	
 	private String name;
 	
@@ -32,7 +30,6 @@ public class Exam {
 	
 	private Integer duration;
 	
-		
     public Integer getId() {
         return id;
     }

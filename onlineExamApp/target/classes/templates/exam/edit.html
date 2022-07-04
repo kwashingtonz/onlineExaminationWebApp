@@ -28,6 +28,7 @@
 			    </div>			  			      
 			      <input hidden="hidden" id="addedBy" type="text" th:value="${user.name}" th:id="addedBy" th:name="addedBy">			 			 		 
 			      <input id=lastUpdatedDate type="hidden" th:field="*{lastUpdatedDate}">			 			 		 
+			      <input type="hidden" th:value="${qservice.countQuestions(exam.id)}" th:id="noQue" th:name="noQue">			 			 		 
 			     
 			    <div class="table-responsive">
 			    <div class="table-responsive">
@@ -110,12 +111,13 @@
 			 	<table class="table-responsive">
 			 	<tr>
 			 	<td>
-			 	<button type="submit" class="btn btn-primary">Save Exam</button>
+			 	<button type="submit" class="btn btn-primary" name="editsave" value="editsave">Save Exam</button>
 			 	</td>
 			 	<td width="10px" background="white">
 			 	</td>
 			 	<td>
-			 	<button class="btn btn-primary btn-block" th:href="@{/exam}"> Publish Exam </button>	
+			 		<button type="submit" class="btn btn-primary btn-block" name="editpublish" value="editpublish"> Publish Exam </button>	
+										 	
 			 	</td>
 			 	</tr>
 			 	</table>
@@ -254,33 +256,6 @@
 			  
 		}
 		
-		function addQuestionSubmit(){
-			
-			if(document.getElementById("ans1").checked == true){
-				var a = document.getElementById("answer1").value;
-				document.getElementById("correctAnswer").value=a;
-			}
-			if(document.getElementById("ans2").checked == true){
-				var b = document.getElementById("answer2").value;					
-				document.getElementById("correctAnswer").value=b;
-			}
-			if(document.getElementById("ans3").checked == true){
-				var c = document.getElementById("answer3").value;
-				document.getElementById("correctAnswer").value=c;
-			}
-			if(document.getElementById("ans4").checked == true){
-				var d = document.getElementById("answer4").value;
-				document.getElementById("correctAnswer").value=d;
-			}
-			
-			
-			var x = document.getElementById("addQuestion");
-			  if (x.style.display === "block")
-			    x.style.display = "none";
-			  
-			  return true;
-			  
-		}
 		
 	</script>
 	<footer lang="en" th:replace="common/footer :: footer"></footer>

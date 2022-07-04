@@ -41,4 +41,12 @@ public class ExamQuestionsService {
 	public List<ExamQuestions> listQuestionsAll(Integer examId) {
         return repo.findByExam(examId);
     }
+	
+	public Integer countQuestions(Integer examId) {
+		return repo.countQuestions(examId);
+	}
+	
+	public void deleteByExamId(Integer examId) {
+		repo.deleteByExamId(examId);
+	}
 }
