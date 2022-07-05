@@ -8,7 +8,6 @@
 		<div class="container my-3">
 		<nav aria-label="breadcrumb">
 			  <ol class="breadcrumb">
-			    <li class="breadcrumb-item"><a th:href="@{/exam}" >Exam List</a></li>
 			    <li class="breadcrumb-item active" aria-current="page" th:text="${exam.name}+' Exam'"></li>
 			  </ol>
 			</nav>
@@ -28,32 +27,32 @@
 								</tr>
 						
 								<tr>
-									<td colspan="3" height="50px">
-										Q:
+									<td style="font-weight:bold;" colspan="3" height="50px" th:text="'Q: '+${question.question}">
+										
 									</td>
 								</tr>
 						
 								<tr>
 									<td style="border: 1px solid #dee2e6; padding-left:40px;" colspan="3" height="200px">
-										<input id="answer1" type="radio"><br>
-										<input id="answer2" type="radio"><br>
-										<input id="answer3" type="radio"><br>
-										<input id="answer4" type="radio">
+										<input id="answer1" type="radio"> <label for="answer1" th:text="${question.answer1}"></label><br>
+										<input id="answer2" type="radio"> <label for="answer2" th:text="${question.answer2}"></label><br>
+										<input id="answer3" type="radio"> <label for="answer3" th:text="${question.answer3}"></label><br>
+										<input id="answer4" type="radio"> <label for="answer4" th:text="${question.answer4}"></label>
 									</td>
 								</tr>
 						
+								<tr height=10px background='white'>
+			    				</tr>
+								
+							</table>
+							<table>
 								<tr>
-									<td height="50px" >
-										<a href="#" class="btnPrev">Previous</a>
-									</td>
-									<td style="padding-left:80px;" width="250px">
-										Question 
-									</td>
-									<td style="padding-left:0px;">
-										<a href="#" class="btnNext">Next</a>
-									</td>
+									<td></td>
+									<td align="center" style="padding-left:90px;"><th:block lang="en" th:replace="common/custompager :: common"> </th:block></td>
+									<td></td>
 								</tr>
 							</table>
+													
 						</td>
 					</tr>
 				</th:block>
@@ -63,10 +62,10 @@
 				<table style="width: auto; margin-right: 0px; margin-left: auto;">
 							<tr>
 								<td style="padding-right:5px;">
-									<button class="btn btn-sm btn-warning">Save</button>
+									<a class="btn btn-sm btn-warning" th:href="@{/exam}">Save</a>
 								</td>
 								<td>
-									<button class="btn btn-sm btn-primary" data-toggle="confirmation" th:href="@{'/exam/result/'+${exam.id}}+'/'+${user.id}">Complete</button>
+									<a class="btn btn-sm btn-primary" data-toggle="confirmation" th:href="@{'/exam/result/'+${exam.id}}+'/'+${user.id}">Complete</a>
 								</td>
 							</tr>
 				</table>

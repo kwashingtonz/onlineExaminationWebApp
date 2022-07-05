@@ -53,7 +53,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 				                <td sec:authorize="hasAnyAuthority('STUDENT')" hidden="hidden" class="ext" th:text="${extservice.examStatus(exam.id)}"></td>				               				          
 				                <td sec:authorize="hasAnyAuthority('TEACHER')"><a th:text="${exam.name}" th:href="@{'/exam/edit/' + ${exam.id}}" ></a></td>				               
 				                <td sec:authorize="hasAnyAuthority('TEACHER')" th:text="${#dates.format(exam.lastUpdatedDate, 'yyyy-MMM-dd')}"></td>               				                				          				                
-				                <td sec:authorize="hasAnyAuthority('STUDENT')" th:text="${#dates.format(exam.startDateTime, 'yyyy-MMM-dd hh:mm a')}"></td>      
+				                <td sec:authorize="hasAnyAuthority('STUDENT')" class="startingDate" th:text="${#dates.format(exam.startDateTime, 'yyyy-MMM-dd hh:mm a')}"></td>      
 				               	<td sec:authorize="hasAnyAuthority('STUDENT')" th:text="${cservice.durationDis(exam.duration)}"></td>      				             			               				             
 				                <td sec:authorize="hasAnyAuthority('STUDENT')"><a class="exss" id="examStudentStatus" th:text="Pending" th:href="@{'/exam/result/'+${exam.id}+'/'+${user.id}}"></a></td>				               
 				            	<td sec:authorize="hasAnyAuthority('TEACHER')"><a class="exts" id="examTeacherStatus" th:text="${extservice.examStatus(exam.id)}" th:href="@{'/exam/status/' + ${exam.id}}"></a></td>				               
@@ -80,7 +80,10 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 		$('#examMenuItem').addClass('active');
 		
 		var elements = document.getElementsByClassName("exts");
-		
+		var elts = document.getElementsByClassName("ext");
+		var es = document.getElementsByClassName("enroll");
+		var its = document.getElementsByClassName("exss");
+		var startDates = document.getElementsByClassName("startingDate");
 		
 		for(var e = 0; e < elements.length; e++) { 
 			   var element = elements[e];
@@ -92,12 +95,8 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 						element.removeAttribute("href");
 					}	
 				}
-			}
+			}	
 		
-		
-		var elts = document.getElementsByClassName("ext");
-		var es = document.getElementsByClassName("enroll");
-		var its = document.getElementsByClassName("exss");
 		
 		for(var g = 0; g < elts.length; g++) { 
 			   var elt = elts[g];
@@ -113,6 +112,20 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 					it.removeAttribute("href");
 				}
 			}
+		
+		for(var v = 0; v < startDates.length; v++){
+			var startDate = startDates[v];
+			var ef = es[v];
+			
+			var dt = startDate.innerHTML;
+			var sd = new Date(dt);
+			var currentDate = new Date();
+			
+			if(currentDate.getTime() < sd.getTime()){
+				ef.removeAttribute("href");	
+			}
+			
+		}
 			
 					
 		function clearSes(){
