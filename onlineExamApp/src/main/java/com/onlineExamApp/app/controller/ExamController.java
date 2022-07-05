@@ -24,6 +24,7 @@ import com.onlineExamApp.app.model.Exam;
 import com.onlineExamApp.app.model.ExamQuestions;
 import com.onlineExamApp.app.model.Search;
 import com.onlineExamApp.app.model.SearchTeacher;
+import com.onlineExamApp.app.model.Users;
 import com.onlineExamApp.app.service.CalculationService;
 import com.onlineExamApp.app.service.ExamQuestionsService;
 import com.onlineExamApp.app.service.ExamService;
@@ -53,7 +54,7 @@ public class ExamController {
 	
 	
 	@RequestMapping(value= "", method = { RequestMethod.GET, RequestMethod.POST })
-	public String list(@ModelAttribute(value = "search") Search search,SearchTeacher searchName,SearchTeacher searchTeacher,Model model, 
+	public String list(@AuthenticationPrincipal MyUserDetails user,@ModelAttribute(value = "search") Search search,SearchTeacher searchName,SearchTeacher searchTeacher,Model model, 
 			@PageableDefault(value = PaginatorHelper.DEFAULT_PAGINATION_SIZE, page = 0) Pageable pageable) {
 		
 		Collection<? extends GrantedAuthority> authorities;
@@ -71,7 +72,8 @@ public class ExamController {
        }
         
         page=PaginatorHelper.pagiableList(exams, pageable);
-		model.addAttribute("exams", exams);
+		model.addAttribute("user",user);
+        model.addAttribute("exams", exams);
 		model.addAttribute("page", page);
 		model.addAttribute("cservice", cservice);
 		model.addAttribute("extservice",extservice);
@@ -191,8 +193,8 @@ public class ExamController {
 	    return "exam/enroll";
 	}
 	
-	@RequestMapping("/enroll/{id}/result")
-	public String resultExam(@AuthenticationPrincipal MyUserDetails user,Model model, @PathVariable(name = "id") int id) {
+	@RequestMapping("/result/{id}/{uid}")
+	public String resultExam(@AuthenticationPrincipal MyUserDetails user,Model model, @PathVariable(name = "id") int id, @PathVariable(name = "uid") int uid) {
 
 		List<ExamQuestions> question = qservice.listQuestionsAll(id);
 		Exam exam = service.get(id);
@@ -232,13 +234,30 @@ public class ExamController {
 	}
 	
 	@RequestMapping("/status/{id}")
-	public String showExamStatus(Model model,@PathVariable(name = "id") int id) {
+	public String showExamStatus(Model model,@PathVariable(name = "id") int id,
+			@PageableDefault(value = PaginatorHelper.DEFAULT_PAGINATION_SIZE, page = 0) Pageable pageable) {
 		Exam exam = service.get(id);
 		
+		List<Users> students = uservice.listStudents();
+		Page<Users> page=PaginatorHelper.pagiableList(students, pageable);
+		
 		model.addAttribute("exam", exam);
+		model.addAttribute("students",students);
+		model.addAttribute("page", page);
+		model.addAttribute("extservice",extservice);
 		model.addAttribute("uservice",uservice);
 		
+		
+		
 		return "exam/status";
+	}
+	
+	@RequestMapping("/end/{id}")
+	public String endExam(Model model,@PathVariable(name = "id") int id) {
+		
+		extservice.finishExam(id);
+		
+		return "redirect:/exam";
 	}
 	
 	@GetMapping("/403")

@@ -46,6 +46,11 @@ public class ExamTeachersStatusService {
 		repo.updateSave(eid,status);
 	}
 	
+	public void finishExam(Integer eid)
+	{
+		String status = "ENDED";
+		repo.updateSave(eid,status);
+	}
 	
 	public void deleteByExamId(Integer examId) {
 		repo.deleteByExamId(examId);

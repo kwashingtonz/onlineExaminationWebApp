@@ -1,5 +1,7 @@
 package com.onlineExamApp.app.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -41,6 +43,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		
 		return count;
 	}
+	
+	public List<Users> listStudents() {
+        return userRepository.listStudents();
+    }
 
 }
 
