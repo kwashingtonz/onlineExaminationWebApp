@@ -8,8 +8,7 @@
 		<div class="container my-3">
 		<nav aria-label="breadcrumb">
 			  <ol class="breadcrumb">
-			    <li class="breadcrumb-item"><a th:href="@{/exam}" >Exam List</a></li>
-			    <li class="breadcrumb-item active" aria-current="page" th:text="${exam.name}"></li>
+			    <li class="breadcrumb-item active" aria-current="page" th:text="${exam.name} +' Exam'"></li>
 			    <li class="breadcrumb-item active" aria-current="page" th:text="${exam.name}+ ' Results'"></li>
 			  </ol>
 			</nav>

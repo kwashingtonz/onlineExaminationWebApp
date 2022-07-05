@@ -9,47 +9,54 @@
 		<nav aria-label="breadcrumb">
 			  <ol class="breadcrumb">
 			    <li class="breadcrumb-item"><a th:href="@{/exam}" >Exam List</a></li>
-			    <li class="breadcrumb-item active" aria-current="page" th:text="${exam.name}"></li>
+			    <li class="breadcrumb-item active" aria-current="page" th:text="${exam.name}+' Exam'"></li>
 			  </ol>
 			</nav>
 			
 			<div class="container" >
 			<div class="table-responsive">
 				<table class="table-responsive" style="width:40%; margin-right:auto; margin-left:auto;" >
-				
-				<tr>
-					<td colspan="3" width="600px" height="80px" style="padding-left:90px;">
-					<p hidden="hidden" id="endDT" th:text="${exam.endDateTime}"></p>
-					<p id="timeLeft" ></p>
-					</td>
-				</tr>
-				
-				<tr>
-					<td colspan="3" height="50px">
-					Q:
-					</td>
-				</tr>
-				
-				<tr>
-					<td style="border: 1px solid #dee2e6; padding-left:40px;" colspan="3" height="200px">
-						<input id="answer1" type="radio"><br>
-						<input id="answer2" type="radio"><br>
-						<input id="answer3" type="radio"><br>
-						<input id="answer4" type="radio">
-					</td>
-				</tr>
-				
-				<tr>
-					<td height="50px" >
-						<a href="#" class="btnPrev">Previous</a>
-					</td>
-					<td style="padding-left:80px;" width="250px">
-						Question 
-					</td>
-					<td style="padding-left:0px;">
-					<a href="#" class="btnNext">Next</a>
-					</td>
-				</tr>
+					<th:block th:if="${page.content.size() > 0 }">
+					<tr th:each="question ,rowNumber : ${page.content}">	
+						<td>
+							<table>
+								<tr>
+									<td colspan="3" width="600px" height="60px" style="padding-left:120px;">
+										<p hidden="hidden" id="endDT" th:text="${exam.endDateTime}"></p>
+										<p id="timeLeft" ></p>
+									</td>
+								</tr>
+						
+								<tr>
+									<td colspan="3" height="50px">
+										Q:
+									</td>
+								</tr>
+						
+								<tr>
+									<td style="border: 1px solid #dee2e6; padding-left:40px;" colspan="3" height="200px">
+										<input id="answer1" type="radio"><br>
+										<input id="answer2" type="radio"><br>
+										<input id="answer3" type="radio"><br>
+										<input id="answer4" type="radio">
+									</td>
+								</tr>
+						
+								<tr>
+									<td height="50px" >
+										<a href="#" class="btnPrev">Previous</a>
+									</td>
+									<td style="padding-left:80px;" width="250px">
+										Question 
+									</td>
+									<td style="padding-left:0px;">
+										<a href="#" class="btnNext">Next</a>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</th:block>
 				</table>
 				</div>
 				<div class="table-responsive">
@@ -59,7 +66,7 @@
 									<button class="btn btn-sm btn-warning">Save</button>
 								</td>
 								<td>
-									<button class="btn btn-sm btn-primary" data-toggle="confirmation" th:href="@{'/exam/enroll/'+${exam.id}+'/result/'}">Complete</button>
+									<button class="btn btn-sm btn-primary" data-toggle="confirmation" th:href="@{'/exam/result/'+${exam.id}}+'/'+${user.id}">Complete</button>
 								</td>
 							</tr>
 				</table>

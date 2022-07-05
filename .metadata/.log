@@ -9235,3 +9235,363 @@ org.eclipse.wst.xml.core.internal.document.StructuredDocumentRegionManagementExc
 
 !ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 09:41:43.757
 !MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 10:05:41.780
+!MESSAGE No line style provider for org.eclipse.wst.sse.ST_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 10:05:41.874
+!MESSAGE No line style provider for org.eclipse.wst.sse.UNKNOWN_PARTITION_TYPE
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 10:05:41.895
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 10:05:41.931
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_CDATA
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 10:05:41.932
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DECL
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 10:05:41.932
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_COMMENT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 10:05:41.933
+!MESSAGE No line style provider for org.eclipse.wst.xml.dtd.internal_subset
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 10:05:41.934
+!MESSAGE No line style provider for org.eclipse.wst.xml.PROCESSING_INSTRUCTION:
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 10:05:41.935
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 10:05:41.935
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 10:38:49.913
+!MESSAGE No line style provider for org.eclipse.wst.sse.ST_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 10:38:49.914
+!MESSAGE No line style provider for org.eclipse.wst.sse.UNKNOWN_PARTITION_TYPE
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 10:38:49.915
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 10:38:49.916
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_CDATA
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 10:38:49.917
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DECL
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 10:38:49.918
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_COMMENT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 10:38:49.919
+!MESSAGE No line style provider for org.eclipse.wst.xml.dtd.internal_subset
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 10:38:49.920
+!MESSAGE No line style provider for org.eclipse.wst.xml.PROCESSING_INSTRUCTION:
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 10:38:49.921
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 10:38:49.922
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:09:33.350
+!MESSAGE No line style provider for org.eclipse.wst.sse.ST_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:09:33.351
+!MESSAGE No line style provider for org.eclipse.wst.sse.UNKNOWN_PARTITION_TYPE
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:09:33.405
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:09:33.440
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_CDATA
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:09:33.441
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DECL
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:09:33.441
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_COMMENT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:09:33.442
+!MESSAGE No line style provider for org.eclipse.wst.xml.dtd.internal_subset
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:09:33.442
+!MESSAGE No line style provider for org.eclipse.wst.xml.PROCESSING_INSTRUCTION:
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:09:33.443
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:09:33.443
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:11:04.265
+!MESSAGE No line style provider for org.eclipse.wst.sse.ST_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:11:04.265
+!MESSAGE No line style provider for org.eclipse.wst.sse.UNKNOWN_PARTITION_TYPE
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:11:04.266
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:11:04.266
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_CDATA
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:11:04.267
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DECL
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:11:04.267
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_COMMENT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:11:04.267
+!MESSAGE No line style provider for org.eclipse.wst.xml.dtd.internal_subset
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:11:04.268
+!MESSAGE No line style provider for org.eclipse.wst.xml.PROCESSING_INSTRUCTION:
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:11:04.268
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:11:04.268
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:28:19.818
+!MESSAGE No line style provider for org.eclipse.wst.sse.ST_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:28:19.819
+!MESSAGE No line style provider for org.eclipse.wst.sse.UNKNOWN_PARTITION_TYPE
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:28:19.820
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:28:19.820
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_CDATA
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:28:19.821
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DECL
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:28:19.821
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_COMMENT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:28:19.822
+!MESSAGE No line style provider for org.eclipse.wst.xml.dtd.internal_subset
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:28:19.822
+!MESSAGE No line style provider for org.eclipse.wst.xml.PROCESSING_INSTRUCTION:
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:28:19.823
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:28:19.823
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:43:04.773
+!MESSAGE No line style provider for org.eclipse.wst.sse.ST_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:43:04.774
+!MESSAGE No line style provider for org.eclipse.wst.sse.UNKNOWN_PARTITION_TYPE
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:43:04.774
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:43:04.775
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_CDATA
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:43:04.775
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DECL
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:43:04.776
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_COMMENT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:43:04.776
+!MESSAGE No line style provider for org.eclipse.wst.xml.dtd.internal_subset
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:43:04.777
+!MESSAGE No line style provider for org.eclipse.wst.xml.PROCESSING_INSTRUCTION:
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:43:04.777
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:43:04.778
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:18.381
+!MESSAGE No line style provider for org.eclipse.wst.sse.ST_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:18.382
+!MESSAGE No line style provider for org.eclipse.wst.sse.UNKNOWN_PARTITION_TYPE
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:18.383
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:18.394
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_CDATA
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:18.395
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DECL
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:18.396
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_COMMENT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:18.396
+!MESSAGE No line style provider for org.eclipse.wst.xml.dtd.internal_subset
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:18.397
+!MESSAGE No line style provider for org.eclipse.wst.xml.PROCESSING_INSTRUCTION:
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:18.398
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:18.398
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:35.031
+!MESSAGE No line style provider for org.eclipse.wst.sse.ST_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:35.032
+!MESSAGE No line style provider for org.eclipse.wst.sse.UNKNOWN_PARTITION_TYPE
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:35.033
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:35.034
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_CDATA
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:35.036
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DECL
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:35.037
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_COMMENT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:35.038
+!MESSAGE No line style provider for org.eclipse.wst.xml.dtd.internal_subset
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:35.039
+!MESSAGE No line style provider for org.eclipse.wst.xml.PROCESSING_INSTRUCTION:
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:35.040
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:35.041
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:50.880
+!MESSAGE No line style provider for org.eclipse.wst.sse.ST_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:50.880
+!MESSAGE No line style provider for org.eclipse.wst.sse.UNKNOWN_PARTITION_TYPE
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:50.881
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:50.882
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_CDATA
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:50.882
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DECL
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:50.883
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_COMMENT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:50.883
+!MESSAGE No line style provider for org.eclipse.wst.xml.dtd.internal_subset
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:50.885
+!MESSAGE No line style provider for org.eclipse.wst.xml.PROCESSING_INSTRUCTION:
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:50.886
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 11:53:50.887
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:18:41.807
+!MESSAGE No line style provider for org.eclipse.wst.sse.ST_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:18:41.808
+!MESSAGE No line style provider for org.eclipse.wst.sse.UNKNOWN_PARTITION_TYPE
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:18:41.821
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:18:41.822
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_CDATA
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:18:41.823
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DECL
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:18:41.824
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_COMMENT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:18:41.831
+!MESSAGE No line style provider for org.eclipse.wst.xml.dtd.internal_subset
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:18:41.832
+!MESSAGE No line style provider for org.eclipse.wst.xml.PROCESSING_INSTRUCTION:
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:18:41.833
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:18:41.834
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:29:41.363
+!MESSAGE No line style provider for org.eclipse.wst.sse.ST_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:29:41.364
+!MESSAGE No line style provider for org.eclipse.wst.sse.UNKNOWN_PARTITION_TYPE
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:29:41.365
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:29:41.365
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_CDATA
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:29:41.366
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DECL
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:29:41.376
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_COMMENT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:29:41.378
+!MESSAGE No line style provider for org.eclipse.wst.xml.dtd.internal_subset
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:29:41.379
+!MESSAGE No line style provider for org.eclipse.wst.xml.PROCESSING_INSTRUCTION:
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:29:41.379
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:29:41.380
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:30:04.293
+!MESSAGE No line style provider for org.eclipse.wst.sse.ST_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:30:04.294
+!MESSAGE No line style provider for org.eclipse.wst.sse.UNKNOWN_PARTITION_TYPE
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:30:04.295
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:30:04.296
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_CDATA
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:30:04.297
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DECL
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:30:04.297
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_COMMENT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:30:04.298
+!MESSAGE No line style provider for org.eclipse.wst.xml.dtd.internal_subset
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:30:04.299
+!MESSAGE No line style provider for org.eclipse.wst.xml.PROCESSING_INSTRUCTION:
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:30:04.300
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-05 12:30:04.300
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER

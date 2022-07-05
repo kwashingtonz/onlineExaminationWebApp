@@ -51,8 +51,7 @@ public class ExamController {
 	
 	@Autowired 
 	private ExamTeachersStatusService extservice;
-	
-	
+
 	@RequestMapping(value= "", method = { RequestMethod.GET, RequestMethod.POST })
 	public String list(@AuthenticationPrincipal MyUserDetails user,@ModelAttribute(value = "search") Search search,SearchTeacher searchName,SearchTeacher searchTeacher,Model model, 
 			@PageableDefault(value = PaginatorHelper.DEFAULT_PAGINATION_SIZE, page = 0) Pageable pageable) {
@@ -179,13 +178,17 @@ public class ExamController {
 	}
 	
 	@RequestMapping("/enroll/{id}")
-	public String enrollExam(@AuthenticationPrincipal MyUserDetails user,Model model, @PathVariable(name = "id") int id) {
+	public String enrollExam(@AuthenticationPrincipal MyUserDetails user,Model model, @PathVariable(name = "id") int id,
+			@PageableDefault(value = PaginatorHelper.ONE_PAGINATION_SIZE, page = 0) Pageable pageable) {
 
-		List<ExamQuestions> question = qservice.listQuestionsAll(id);
 		Exam exam = service.get(id);
+		List<ExamQuestions> question = qservice.listQuestionsAll(id);
+		Page<ExamQuestions> page=PaginatorHelper.pagiableList(question, pageable);
+		
 		
 		model.addAttribute("question", question);
-
+		model.addAttribute("page", page);
+		
 	    model.addAttribute("user", user);
 	    model.addAttribute("exam", exam);
 	    
