@@ -5,7 +5,7 @@
 		
 			<ul class="pagination  justify-content-end">
 		  		<li class="page-item" th:if="${page.hasPrevious()}">
-		  			<a class="page-link" th:href="@{'?page=' + ${page.number-1} + '&size=' + ${page.size}}">Previous</a>
+		  			<a class="page-link" th:href="@{'?page=' + ${page.number-1}}" th:onclick="${exsservice.updateLastQueNo(user.id,exam.id,page.number)}">Previous</a>
 		  		</li>
 		  		
 		  		<li class="page-item disabled" th:unless="${page.hasPrevious()}">
@@ -13,11 +13,11 @@
 		  		</li>
 		  		
 				<li  class="page-item disabled">
-					<a style="color:black;" class="page-link" th:text="'Question '+${(page.number * page.size) + rowNumber.index + 1}"></a>
+					<a style="color:black;" class="page-link" th:text="'Question '+${(page.number) + 1}"></a>
 				</li>
 		       	
 		      	<li class="page-item" th:if="${page.hasNext()}">
-		      		<a style="width:80px;" class="page-link" th:href="@{'?page=' + ${page.number+1} + '&size=' +${page.size}}">Next</a>
+		      		<a style="width:80px;" class="page-link" th:href="@{'?page=' + ${page.number+1}}" th:onclick="${exsservice.updateLastQueNo(user.id,exam.id,page.number)}">Next</a>
 		      	</li>
 		      	<li class="page-item disabled" th:unless="${page.hasNext()}">
 		      		<a  style="text-align:center; width:80px;" class="page-link">Next</a>
@@ -30,20 +30,5 @@
 		    return (RegExp(name + '=' + '(.+?)(&|$)').exec(url)||[,null])[1];
 		}
 
-		$(document).ready(function(){
-
-			$("ul.pagination li a").click(function(e){
-				var searchform = $("form[id*='searchForm' i]");
-				var isDisabled = $(this).parent(".disabled").length;
-
-				if(searchform.length && !isDisabled){
-
-					e.preventDefault();
-					var href = $(this).attr('href');
-					searchform.attr('action',href);
-					searchform.submit();
-				}			
-			});
-		}); 
 	</script>	
 </th:block>

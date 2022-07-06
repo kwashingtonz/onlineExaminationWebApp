@@ -55,7 +55,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 				                <td sec:authorize="hasAnyAuthority('TEACHER')" th:text="${#dates.format(exam.lastUpdatedDate, 'yyyy-MMM-dd')}"></td>               				                				          				                
 				                <td sec:authorize="hasAnyAuthority('STUDENT')" class="startingDate" th:text="${#dates.format(exam.startDateTime, 'yyyy-MMM-dd hh:mm a')}"></td>      
 				               	<td sec:authorize="hasAnyAuthority('STUDENT')" th:text="${cservice.durationDis(exam.duration)}"></td>      				             			               				             
-				                <td sec:authorize="hasAnyAuthority('STUDENT')"><a class="exss" id="examStudentStatus" th:text="Pending" th:href="@{'/exam/result/'+${exam.id}+'/'+${user.id}}"></a></td>				               
+				                <td sec:authorize="hasAnyAuthority('STUDENT')"><a class="exss" id="examStudentStatus" th:text="${exsservice.getStatus(user.id,exam.id)} ?: 'PENDING'" th:href="@{'/exam/result/'+${exam.id}+'/'+${user.id}}"></a></td>				               
 				            	<td sec:authorize="hasAnyAuthority('TEACHER')"><a class="exts" id="examTeacherStatus" th:text="${extservice.examStatus(exam.id)}" th:href="@{'/exam/status/' + ${exam.id}}"></a></td>				               
 				                
 				                <td sec:authorize="hasAnyAuthority('TEACHER')">

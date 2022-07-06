@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.Authentication;
@@ -28,6 +29,7 @@ import com.onlineExamApp.app.model.Users;
 import com.onlineExamApp.app.service.CalculationService;
 import com.onlineExamApp.app.service.ExamQuestionsService;
 import com.onlineExamApp.app.service.ExamService;
+import com.onlineExamApp.app.service.ExamStudentsStatusService;
 import com.onlineExamApp.app.service.ExamTeachersStatusService;
 import com.onlineExamApp.app.service.MyUserDetails;
 import com.onlineExamApp.app.service.UserDetailsServiceImpl;
@@ -51,6 +53,11 @@ public class ExamController {
 	
 	@Autowired 
 	private ExamTeachersStatusService extservice;
+	
+	@Autowired 
+	private ExamStudentsStatusService exsservice;
+	
+	private Integer flag;
 
 	@RequestMapping(value= "", method = { RequestMethod.GET, RequestMethod.POST })
 	public String list(@AuthenticationPrincipal MyUserDetails user,@ModelAttribute(value = "search") Search search,SearchTeacher searchName,SearchTeacher searchTeacher,Model model, 
@@ -67,6 +74,7 @@ public class ExamController {
     		exams = service.listTeacherSearched(searchName,searchTeacher);
         }else {       	
         	exams = service.listPublishedSearched(search);
+        	flag=0;
         	
        }
         
@@ -76,6 +84,8 @@ public class ExamController {
 		model.addAttribute("page", page);
 		model.addAttribute("cservice", cservice);
 		model.addAttribute("extservice",extservice);
+		model.addAttribute("exsservice",exsservice);
+		
 		
         return "exam/list";	
 	}
@@ -180,17 +190,24 @@ public class ExamController {
 	@RequestMapping("/enroll/{id}")
 	public String enrollExam(@AuthenticationPrincipal MyUserDetails user,Model model, @PathVariable(name = "id") int id,
 			@PageableDefault(value = PaginatorHelper.ONE_PAGINATION_SIZE, page = 0) Pageable pageable) {
-
+			
 		Exam exam = service.get(id);
 		List<ExamQuestions> question = qservice.listQuestionsAll(id);
-		Page<ExamQuestions> page=PaginatorHelper.pagiableList(question, pageable);
+		Integer lqn = exsservice.getLastQueNo(user.getId(), exam.getId());
 		
+		if(flag==0) {
+			pageable = PageRequest.of(lqn, PaginatorHelper.ONE_PAGINATION_SIZE);
+			flag=1;
+		}
+		
+		Page<ExamQuestions> page=PaginatorHelper.pagiableList(question, pageable);
 		
 		model.addAttribute("question", question);
 		model.addAttribute("page", page);
 		
 	    model.addAttribute("user", user);
 	    model.addAttribute("exam", exam);
+	    model.addAttribute("exsservice",exsservice);
 	    
 		
 	    return "exam/enroll";
