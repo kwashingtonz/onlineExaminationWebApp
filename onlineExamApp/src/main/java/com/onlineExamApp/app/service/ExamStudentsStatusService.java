@@ -20,7 +20,7 @@ public class ExamStudentsStatusService {
 	public void insertStatus(Integer userId,Integer examId) {
 		
 		List<ExamStudentsStatus> selectList = repo.selectAllStatus(userId, examId);
-		System.out.println("List = "+selectList);
+		
 		if(selectList.isEmpty())
 		{
 			String status = "ENROLLED";
@@ -41,6 +41,10 @@ public class ExamStudentsStatusService {
 	
 	public Integer getLastQueNo(Integer userId,Integer examId) {
 		return repo.getLastQue(userId, examId)-1;
+	}
+	
+	public void deleteByExamId(Integer examId) {
+		repo.deleteByExamId(examId);
 	}
 	
 }

@@ -193,6 +193,9 @@ public class ExamController {
 			
 		Exam exam = service.get(id);
 		List<ExamQuestions> question = qservice.listQuestionsAll(id);
+		
+		exsservice.insertStatus(user.getId(),id);
+		
 		Integer lqn = exsservice.getLastQueNo(user.getId(), exam.getId());
 		
 		if(flag==0) {
@@ -233,6 +236,7 @@ public class ExamController {
 	    service.delete(id);
 	    extservice.deleteByExamId(id);
 	    qservice.deleteByExamId(id);
+	    exsservice.deleteByExamId(id);
 	    
 	    return "redirect:/exam";
 	}
