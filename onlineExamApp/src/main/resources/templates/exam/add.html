@@ -19,7 +19,7 @@
 			  				<tr>
 			  					<td>
 			  					<div class="container">
-			  						<form onsubmit="calculateDuration()" th:action="@{/exam/save}" th:object="${exam}" method="post" class="need-validated">
+			  						<form onsubmit="return validateDate(this)" th:action="@{/exam/save}" th:object="${exam}" method="post" class="need-validated">
 			  
 			  						<input type="hidden" th:value="${service.getLastIdAndNewId()}" th:id="id" th:name="id">
 			  
@@ -229,22 +229,6 @@
 		
 		document.getElementById("lastUpdatedDate").value = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);;
 
-		function calculateDuration(){
-			var endDate = document.getElementById("end").value;
-			var startDate = document.getElementById("start").value;
-			
-			var fromDate = parseInt(new Date(startDate).getTime()/1000);
-			var toDate = parseInt(new Date(endDate).getTime()/1000);
-			
-			
-			var timeDiff = (toDate - fromDate);
-			
-			var duration = timeDiff;
-			
-			document.getElementById("duration").value = duration;		
-			
-			return true;
-		}
 		
 		function addQuestionDis(){
 			
@@ -252,6 +236,41 @@
 			  if (x.style.display == "none")
 			    x.style.display = "block";
 			  
+		}
+		
+		function validateDate(form){
+			var endDate = document.getElementById("end").value;
+			var startDate = document.getElementById("start").value;
+			
+			var sDate = new Date(startDate);
+			var eDate =new Date(endDate);
+			
+			if(isNaN(sDate)){
+				alert("Invalid Start Date and Time");
+				return false;
+			}else{
+				if(isNaN(eDate)){
+					alert("Invalid End Date and Time");
+					return false;
+				}else{
+					if(eDate.getTime()<sDate.getTime()){
+						alert("Invalid Date and Time Duration");
+						return false;	
+					}else{
+						var fromDate = parseInt(new Date(startDate).getTime()/1000);
+						var toDate = parseInt(new Date(endDate).getTime()/1000);
+						
+						
+						var timeDiff = (toDate - fromDate);
+						
+						var duration = timeDiff;
+						
+						document.getElementById("duration").value = duration;		
+						
+						return true;
+					}
+				}
+			}
 		}
 		
 			
