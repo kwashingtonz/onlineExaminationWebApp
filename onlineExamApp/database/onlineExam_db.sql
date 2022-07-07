@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2022 at 02:12 PM
+-- Generation Time: Jul 07, 2022 at 06:59 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -30,11 +30,12 @@ SET time_zone = "+00:00";
 CREATE TABLE `exam` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `added_by` varchar(255) DEFAULT NULL,
-  `last_updated_date` datetime DEFAULT NULL,
+  `added_by` varchar(255) NOT NULL,
+  `last_updated_date` datetime NOT NULL DEFAULT current_timestamp(),
   `no_ques` int(11) DEFAULT NULL,
   `start_date_time` datetime NOT NULL,
-  `duration` datetime DEFAULT NULL
+  `end_date_time` datetime DEFAULT NULL,
+  `duration` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -65,7 +66,8 @@ CREATE TABLE `exam_results` (
   `user_id` int(11) NOT NULL,
   `exam_id` int(11) NOT NULL,
   `que_id` int(11) NOT NULL,
-  `result_status` varchar(255) NOT NULL
+  `given_answer` varchar(255) DEFAULT NULL,
+  `result_status` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -77,9 +79,9 @@ CREATE TABLE `exam_results` (
 CREATE TABLE `exam_students_status` (
   `user_id` int(11) NOT NULL,
   `exam_id` int(11) NOT NULL,
-  `pending_status` varchar(45) NOT NULL,
-  `last_que_id` int(11) NOT NULL,
-  `final_result` decimal(10,2) NOT NULL
+  `pending_status` varchar(45) NOT NULL DEFAULT 'PENDING',
+  `last_que_id` int(11) NOT NULL DEFAULT 1,
+  `final_result` decimal(10,2) NOT NULL DEFAULT 0.00
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -91,7 +93,7 @@ CREATE TABLE `exam_students_status` (
 CREATE TABLE `exam_teachers_status` (
   `user_id` int(11) NOT NULL,
   `exam_id` int(11) NOT NULL,
-  `publish_status` varchar(45) NOT NULL
+  `publish_status` varchar(45) NOT NULL DEFAULT 'DRAFTED'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -121,8 +123,8 @@ INSERT INTO `role` (`id`, `name`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -132,7 +134,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `name`, `password`) VALUES
 (1, 'teacher@gmail.com', 'teacher1', '$2a$10$6An7cqLIQCuWLzQEM9xLNedoee0xsf3rVNgoPby/AvcAH3nBXkceC'),
-(2, 'student@gmail.com', 'student1', '$2a$10$UdJUuYlIsRbWCYrI5XmVYuF.KkRRDopoOvlPnuYIEEE5bc2Xw9bP6');
+(2, 'student@gmail.com', 'student1', '$2a$10$UdJUuYlIsRbWCYrI5XmVYuF.KkRRDopoOvlPnuYIEEE5bc2Xw9bP6'),
+(3, 'teacher2@gmail.com', 'teacher2', '$2a$10$6An7cqLIQCuWLzQEM9xLNedoee0xsf3rVNgoPby/AvcAH3nBXkceC'),
+(4, 'student2@gmail.com', 'student2', '$2a$10$UdJUuYlIsRbWCYrI5XmVYuF.KkRRDopoOvlPnuYIEEE5bc2Xw9bP6');
 
 -- --------------------------------------------------------
 
@@ -151,7 +155,9 @@ CREATE TABLE `users_roles` (
 
 INSERT INTO `users_roles` (`user_id`, `role_id`) VALUES
 (1, 1),
-(2, 2);
+(2, 2),
+(3, 1),
+(4, 2);
 
 --
 -- Indexes for dumped tables
@@ -214,19 +220,19 @@ ALTER TABLE `users_roles`
 -- AUTO_INCREMENT for table `exam`
 --
 ALTER TABLE `exam`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `exam_questions`
 --
 ALTER TABLE `exam_questions`
-  MODIFY `que_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `que_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `exam_results`
 --
 ALTER TABLE `exam_results`
-  MODIFY `result_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `result_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `role`
@@ -238,7 +244,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

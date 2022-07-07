@@ -13,5 +13,5 @@ Execute as a Java Application
 
 
  2 Roles available:
- Teacher - email = teacher@gmail.com	password = teacher123
- Student	- email = student@gmail.com	password = student123	
+ Teacher - (teacher1) email = teacher@gmail.com	password = teacher123, (teacher2) email = teacher2@gmail.com	password = teacher123
+ Student - (student1) email = student@gmail.com	password = student123, (student2) email = student2@gmail.com	password = student123
