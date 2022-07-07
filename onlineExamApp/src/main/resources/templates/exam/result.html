@@ -27,12 +27,14 @@
 							</tr>
 							<tr>
 								<td colspan="3" height="80px" style="padding-left:120px;" >
-								<label style="font-size:60px; color:green;">Passed</label>
+								<label th:if="${rservice.getPassStatus(user.id,exam.id) == 'Passed'}" style="font-size:60px; color:green;">Passed</label>
+								<label th:unless="${rservice.getPassStatus(user.id,exam.id) == 'Passed'}" style="font-size:60px; color:red;">Failed</label>
+								
 								</td>
 							</tr>
 							<tr>
 								<td colspan="3" height="50px" style="padding-left:155px;">
-								<label># - ### Points</label>
+								<p th:text="${rservice.getPoints(user.id,exam.id)}"></p> 
 								</td>
 							</tr>
 						</table>
@@ -45,6 +47,25 @@
 				<tr>
 					<td valign="top" style="border: 1px solid #dee2e6; padding-left:10px; padding-top:5px;" colspan="3" height="200px">
 						Questions
+						<div class="table-responsive">
+			    				<table class="table table-bordered table-striped"  style="overflow-x: auto !important;">
+			
+			                		<tbody>
+			        					<th:block th:if="${page.content.size() > 0 }">
+											<tr th:each="question ,rowNumber : ${page.content}">	
+												<td th:text="'Question '+${(page.number * page.size) + rowNumber.index + 1}"></td>				               				              
+				                				<td class="completion" th:text="${rservice.getResultStatus(user.id,exam.id,question.queId)}"></td>				               
+				                			</tr>
+				        				</th:block>
+				        				<th:block th:unless="${page.content.size() > 0 }">
+											<tr>
+												<td colspan="100%" class="alert alert-danger" style="text-align: center;">No Students Available</td>
+											</tr>
+										</th:block>
+			        				</tbody>
+			                	</table>
+			                	<th:block lang="en" th:replace="common/pager :: common"> </th:block>
+			                </div>		
 					</td>
 				</tr>
 				
@@ -53,7 +74,8 @@
 				
 				<tr>
 					<td height="50px" >
-						<a th:href="@{/exam}" class="btnPrev">Close</a>
+						<a sec:authorize="hasAnyAuthority('STUDENT')" th:href="@{/exam}" class="btnPrev">Close</a>
+						<a sec:authorize="hasAnyAuthority('TEACHER')" th:href="@{'/exam/status/'+${exam.id}}" class="btnPrev">Close</a>
 					</td>
 				</tr>
 				</table>

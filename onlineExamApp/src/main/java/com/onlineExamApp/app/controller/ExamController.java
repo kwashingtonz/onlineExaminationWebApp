@@ -251,32 +251,60 @@ public class ExamController {
 	}
 	
 	@RequestMapping("/result/{id}/{uid}")
-	public String resultExam(@AuthenticationPrincipal MyUserDetails user,Model model, @PathVariable(name = "id") int id, @PathVariable(name = "uid") int uid) {
+	public String resultExam(@AuthenticationPrincipal MyUserDetails user,Model model, @PathVariable(name = "id") int id, @PathVariable(name = "uid") int uid,
+			@PageableDefault(value = PaginatorHelper.DEFAULT_PAGINATION_SIZE, page = 0) Pageable pageable) {
 
 		List<ExamQuestions> question = qservice.listQuestionsAll(id);
+		Page<ExamQuestions> page=PaginatorHelper.pagiableList(question, pageable);
+		
 		Exam exam = service.get(id);
 		
 		model.addAttribute("question", question);
-
+		model.addAttribute("page",page);
 	    model.addAttribute("user", user);
 	    model.addAttribute("exam", exam);
+	    model.addAttribute("rservice",rservice);
+	    
+		
+	    return "exam/result";
+	}
+	
+	@RequestMapping("/resultTeacher/{id}/{sid}")
+	public String resultTeacherExam(Model model, @PathVariable(name = "id") int id, @PathVariable(name = "sid") int sid,
+			@PageableDefault(value = PaginatorHelper.DEFAULT_PAGINATION_SIZE, page = 0) Pageable pageable) {
+		Users user = new Users();
+		user.setId(sid);
+		List<ExamQuestions> question = qservice.listQuestionsAll(id);
+		Page<ExamQuestions> page=PaginatorHelper.pagiableList(question, pageable);
+		
+		Exam exam = service.get(id);
+		
+		model.addAttribute("question", question);
+		model.addAttribute("page",page);
+	    model.addAttribute("user", user);
+	    model.addAttribute("exam", exam);
+	    model.addAttribute("rservice",rservice);
 	    
 		
 	    return "exam/result";
 	}
 	
 	@RequestMapping("/resultStudent/{id}/{uid}")
-	public String resultStudentExam(@AuthenticationPrincipal MyUserDetails user,Model model, @PathVariable(name = "id") int id, @PathVariable(name = "uid") int uid) {
+	public String resultStudentExam(@AuthenticationPrincipal MyUserDetails user,Model model, @PathVariable(name = "id") int id, @PathVariable(name = "uid") int uid,
+			@PageableDefault(value = PaginatorHelper.DEFAULT_PAGINATION_SIZE, page = 0) Pageable pageable) {
 
 		exsservice.updateStudentStatus(uid, id);
 		
 		List<ExamQuestions> question = qservice.listQuestionsAll(id);
+		Page<ExamQuestions> page=PaginatorHelper.pagiableList(question, pageable);
+		
 		Exam exam = service.get(id);
 		
 		model.addAttribute("question", question);
-
+		model.addAttribute("page",page);
 	    model.addAttribute("user", user);
 	    model.addAttribute("exam", exam);
+	    model.addAttribute("rservice",rservice);
 	    
 		
 	    return "exam/result";

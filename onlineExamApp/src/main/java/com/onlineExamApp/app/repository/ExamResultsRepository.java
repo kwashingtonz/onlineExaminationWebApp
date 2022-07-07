@@ -33,4 +33,11 @@ public interface ExamResultsRepository extends JpaRepository<ExamResults, Intege
 	
 	@Query(value="SELECT COUNT(result_id) FROM exam_results  WHERE  user_id = :uid AND exam_id = :eid AND given_answer IS NOT NULL",nativeQuery = true)
 	Integer getCount(@Param("uid") Integer uid ,@Param("eid") Integer eid);
+	
+	@Query(value="SELECT result_status FROM exam_results  WHERE que_id = :qid AND user_id = :uid AND exam_id = :eid",nativeQuery = true)
+	String getResultStatus(@Param("uid") Integer uid ,@Param("eid") Integer eid,@Param("qid") Integer qid);
+	
+	@Query(value="SELECT COUNT(result_id) FROM exam_results  WHERE  user_id = :uid AND exam_id = :eid AND result_status = 'Correct'",nativeQuery = true)
+	Integer countCorrect(@Param("uid") Integer uid ,@Param("eid") Integer eid);
+	
 }
