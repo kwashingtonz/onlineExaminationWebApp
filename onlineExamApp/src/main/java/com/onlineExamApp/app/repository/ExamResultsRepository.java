@@ -20,9 +20,9 @@ public interface ExamResultsRepository extends JpaRepository<ExamResults, Intege
 	void insertResult(@Param("uid") Integer uid ,@Param("eid") Integer eid,@Param("qid") Integer qid);
 	
 	@Modifying
-	@Query(value="UPDATE exam_results SET given_answer = ?4 WHERE user_id = ?1 AND exam_id = ?2 AND que_id = ?3  ", nativeQuery = true)
+	@Query(value="UPDATE exam_results SET given_answer = ?4 , result_status = ?5 WHERE user_id = ?1 AND exam_id = ?2 AND que_id = ?3  ", nativeQuery = true)
 	@Transactional
-	void updateResult(@Param("uid") Integer uid ,@Param("eid") Integer eid,@Param("qid") Integer qid,@Param("gA") String gA);
+	void updateResult(@Param("uid") Integer uid ,@Param("eid") Integer eid,@Param("qid") Integer qid,@Param("gA") String gA,@Param("rS") String rS);
 
 	@Query(value="SELECT given_answer FROM exam_results  WHERE que_id = :qid AND user_id = :uid AND exam_id = :eid",nativeQuery = true)
 	String getGivenAnswer(@Param("uid") Integer uid ,@Param("eid") Integer eid,@Param("qid") Integer qid);
@@ -30,4 +30,7 @@ public interface ExamResultsRepository extends JpaRepository<ExamResults, Intege
 	@Modifying
 	@Query("DELETE FROM ExamResults e where e.examId = ?1")
 	void deleteByExamId(@Param("examId")Integer examId);
+	
+	@Query(value="SELECT COUNT(result_id) FROM exam_results  WHERE  user_id = :uid AND exam_id = :eid AND given_answer IS NOT NULL",nativeQuery = true)
+	Integer getCount(@Param("uid") Integer uid ,@Param("eid") Integer eid);
 }

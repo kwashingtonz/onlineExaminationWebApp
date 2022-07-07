@@ -49,4 +49,8 @@ public class ExamQuestionsService {
 	public void deleteByExamId(Integer examId) {
 		repo.deleteByExamId(examId);
 	}
+	
+	public String getCorrectAnswer(Integer qid,Integer eid) {
+		return repo.getCorrectAnswer(qid, eid);
+	}
 }

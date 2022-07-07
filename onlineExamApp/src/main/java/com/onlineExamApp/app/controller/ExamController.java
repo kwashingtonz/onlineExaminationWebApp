@@ -322,6 +322,7 @@ public class ExamController {
 		model.addAttribute("page", page);
 		model.addAttribute("extservice",extservice);
 		model.addAttribute("uservice",uservice);
+		model.addAttribute("rservice",rservice);
 		
 		
 		

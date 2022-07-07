@@ -22,4 +22,7 @@ public interface ExamQuestionsRepository extends JpaRepository<ExamQuestions, In
 	@Modifying
     @Query("DELETE FROM ExamQuestions e where e.examId = ?1")
     void deleteByExamId(@Param("examId")Integer examId);
+
+	@Query(value="SELECT correct_answer FROM exam_questions  WHERE que_id = :qid AND exam_id = :eid",nativeQuery=true)
+	String getCorrectAnswer(@Param("qid")Integer qid,@Param("eid")Integer eid);
 }

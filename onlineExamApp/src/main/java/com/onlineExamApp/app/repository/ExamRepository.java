@@ -23,4 +23,7 @@ public interface ExamRepository extends JpaRepository<Exam, Integer>{
 	
 	@Query(value= "SELECT * FROM Exam i LEFT JOIN exam_teachers_status e ON i.id = e.exam_id WHERE e.publish_status LIKE 'PUBLISHED' OR  e.publish_status LIKE 'ENDED' AND i.name LIKE  %:name%  order by i.id desc", nativeQuery = true)
 	List<Exam> listPublishedSearched(@Param("name")String name);
+	
+	@Query(value="SELECT no_ques FROM exam  WHERE id = :eid",nativeQuery = true)
+	Integer getNoQues(@Param("eid") Integer eid);
 }
