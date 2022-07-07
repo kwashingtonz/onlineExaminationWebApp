@@ -23,11 +23,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.onlineExamApp.app.model.Exam;
 import com.onlineExamApp.app.model.ExamQuestions;
+import com.onlineExamApp.app.model.ExamResults;
 import com.onlineExamApp.app.model.Search;
 import com.onlineExamApp.app.model.SearchTeacher;
 import com.onlineExamApp.app.model.Users;
 import com.onlineExamApp.app.service.CalculationService;
 import com.onlineExamApp.app.service.ExamQuestionsService;
+import com.onlineExamApp.app.service.ExamResultsService;
 import com.onlineExamApp.app.service.ExamService;
 import com.onlineExamApp.app.service.ExamStudentsStatusService;
 import com.onlineExamApp.app.service.ExamTeachersStatusService;
@@ -56,6 +58,9 @@ public class ExamController {
 	
 	@Autowired 
 	private ExamStudentsStatusService exsservice;
+	
+	@Autowired
+	private ExamResultsService rservice;
 	
 	private Integer flag;
 
@@ -187,12 +192,27 @@ public class ExamController {
 	    return "redirect:/exam";
 	}
 	
+
 	@RequestMapping("/enroll/{id}")
 	public String enrollExam(@AuthenticationPrincipal MyUserDetails user,Model model, @PathVariable(name = "id") int id,
 			@PageableDefault(value = PaginatorHelper.ONE_PAGINATION_SIZE, page = 0) Pageable pageable) {
-			
+		ExamResults result = new ExamResults();	
 		Exam exam = service.get(id);
 		List<ExamQuestions> question = qservice.listQuestionsAll(id);
+		
+		for(int c=0;c<question.size();c++) {
+			
+			ExamQuestions ex = question.get(c);
+			Integer qid = ex.getQueId();
+			
+			ExamResults res = rservice.getResult(user.getId(), id, qid);
+			
+			if(res==null) {
+				rservice.insertResult(user.getId(),id,qid);
+			}
+		}
+		
+		
 		
 		exsservice.insertStatus(user.getId(),id);
 		
@@ -211,9 +231,22 @@ public class ExamController {
 	    model.addAttribute("user", user);
 	    model.addAttribute("exam", exam);
 	    model.addAttribute("exsservice",exsservice);
+	    model.addAttribute("result",result);
 	    
 		
 	    return "exam/enroll";
+	}
+	
+	@RequestMapping(value = "/resultsave", method = RequestMethod.POST)
+	public String updateGivenAnswer(@ModelAttribute("result") ExamResults result) {
+	    
+		rservice.updateResult(result.getUserId(), result.getExamId(), result.getQueId(), result.getGivenAnswer());
+		Integer lqn = exsservice.getLastQueNo(result.getUserId(), result.getExamId());
+		String lastqn = lqn.toString();
+		String exId = result.getExamId().toString();
+		System.out.println(result.getUserId());
+		
+	    return "redirect:/exam/enroll/"+exId+"?page="+lastqn;
 	}
 	
 	@RequestMapping("/result/{id}/{uid}")

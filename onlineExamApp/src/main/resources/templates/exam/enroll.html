@@ -34,10 +34,19 @@
 						
 								<tr>
 									<td style="border: 1px solid #dee2e6; padding-left:40px;" colspan="3" height="200px">
-										<input id="answer1" type="radio" name="anwser"> <label for="answer1" th:text="${question.answer1}"></label><br>
-										<input id="answer2" type="radio" name="anwser"> <label for="answer2" th:text="${question.answer2}"></label><br>
-										<input id="answer3" type="radio" name="anwser"> <label for="answer3" th:text="${question.answer3}"></label><br>
-										<input id="answer4" type="radio" name="anwser"> <label for="answer4" th:text="${question.answer4}"></label>
+										
+										<form id="answerForm" th:action="@{/exam/resultsave/}" th:object="${result}" method="post" class="need-validated">
+										
+										<input type="hidden" th:value="${user.id}" th:id="userId" th:name="userId">
+										<input type="hidden" th:value="${exam.id}" th:id="examId" th:name="examId">
+										<input type="hidden" th:value="${question.queId}" th:id="queId" th:name="queId">
+										<input id="givenAnswer" type="hidden" th:id="givenAnswer" th:name="givenAnswer">
+										<input id="radio1" type="radio" name="anwser" onclick="frmSubmit()"> <label for="answer1" th:text="${question.answer1}"></label><input type="hidden" id="a1" th:value="${question.answer1}"><br>
+										<input id="radio2" type="radio" name="anwser" onclick="frmSubmit()"> <label for="answer2" th:text="${question.answer2}"></label><input type="hidden" id="a2" th:value="${question.answer2}"><br>
+										<input id="radio3" type="radio" name="anwser" onclick="frmSubmit()"> <label for="answer3" th:text="${question.answer3}"></label><input type="hidden" id="a3" th:value="${question.answer3}"><br>
+										<input id="radio4" type="radio" name="anwser" onclick="frmSubmit()"> <label for="answer4" th:text="${question.answer4}"></label><input type="hidden" id="a4" th:value="${question.answer4}">
+										
+										</form>
 									</td>
 								</tr>
 						
@@ -103,8 +112,47 @@
 			    document.getElementById("timeLeft").innerHTML = "Time Left : EXPIRED";
 			  }
 			}, 1000);
+				
+		function frmSubmit(){
+			getGivenAnswer();
+			
+			const form = document.getElementById('answerForm');
+			
+			form.submit();
+		}
+		
+		function getGivenAnswer(){
+			
+			const a = document.getElementById("a1").value;
+			const b = document.getElementById("a2").value;
+			const c = document.getElementById("a3").value;
+	    	const d = document.getElementById("a4").value;
+			
+			if(document.getElementById("radio1").checked){
+				
+				document.getElementById("givenAnswer").value = a;
+			}
+			
+			if(document.getElementById("radio2").checked){
+								
+				document.getElementById("givenAnswer").value = b; 
+			}
+			
+			if(document.getElementById("radio3").checked){
+				
+				document.getElementById("givenAnswer").value = c;
+			}
+			
+			if(document.getElementById("radio4").checked){
+				
+				document.getElementById("givenAnswer").value = d;
+			}
+			
+			return true;
+	}
+				
 	</script>
-
+	
 <footer lang="en" th:replace="common/footer :: footer"></footer>
 	<script th:src='@{/js/bootstrap-confirmation.min.js}'></script>
 	<script th:src="@{/js/confirmation-config.js}"></script>
