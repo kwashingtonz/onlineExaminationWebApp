@@ -104,13 +104,20 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 			   var it = its[g];
 			   
 				var st = elt.innerHTML;
+				var ih = it.innerHTML;
 				
 				if (st == "ENDED"){
 					
 					it.innerHTML = "ENDED - RESULTS"
 					ez.removeAttribute("href");				
 				}else{
-					it.removeAttribute("href");
+					if(ih == "FINISHED"){
+						it.innerHTML = "FINISHED ATTEMPT - RESULTS"
+						ez.removeAttribute("href");	
+					}else{
+						it.removeAttribute("href");
+					}
+					
 				}
 			}
 		

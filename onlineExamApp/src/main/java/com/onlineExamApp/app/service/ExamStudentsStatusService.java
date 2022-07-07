@@ -47,4 +47,10 @@ public class ExamStudentsStatusService {
 		repo.deleteByExamId(examId);
 	}
 	
+	public void updateStudentStatus(Integer userId,Integer examId) {
+		String st = "FINISHED";
+		repo.updateStudentStatus(userId, examId,st);
+	}
+	
+	
 }

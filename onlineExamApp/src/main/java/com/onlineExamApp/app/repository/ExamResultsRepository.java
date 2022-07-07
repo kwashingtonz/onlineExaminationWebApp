@@ -26,4 +26,8 @@ public interface ExamResultsRepository extends JpaRepository<ExamResults, Intege
 
 	@Query(value="SELECT given_answer FROM exam_results  WHERE que_id = :qid AND user_id = :uid AND exam_id = :eid",nativeQuery = true)
 	String getGivenAnswer(@Param("uid") Integer uid ,@Param("eid") Integer eid,@Param("qid") Integer qid);
+	
+	@Modifying
+	@Query("DELETE FROM ExamResults e where e.examId = ?1")
+	void deleteByExamId(@Param("examId")Integer examId);
 }

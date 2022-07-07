@@ -36,5 +36,11 @@ public interface ExamStudentsStatusRepository extends JpaRepository<ExamStudents
 	 @Modifying
 	 @Query("DELETE FROM ExamStudentsStatus e where e.examId = ?1")
 	 void deleteByExamId(@Param("examId")Integer examId);
+	 
+	 @Modifying
+	 @Query(value="UPDATE exam_students_status SET pending_status = ?3 WHERE exam_id = ?2 AND user_id = ?1  ", nativeQuery = true)
+	 @Transactional
+	 void updateStudentStatus(@Param("uid") Integer uid ,@Param("eid") Integer eid,@Param("st") String st);
+	 
 	
 }

@@ -265,12 +265,30 @@ public class ExamController {
 	    return "exam/result";
 	}
 	
+	@RequestMapping("/resultStudent/{id}/{uid}")
+	public String resultStudentExam(@AuthenticationPrincipal MyUserDetails user,Model model, @PathVariable(name = "id") int id, @PathVariable(name = "uid") int uid) {
+
+		exsservice.updateStudentStatus(uid, id);
+		
+		List<ExamQuestions> question = qservice.listQuestionsAll(id);
+		Exam exam = service.get(id);
+		
+		model.addAttribute("question", question);
+
+	    model.addAttribute("user", user);
+	    model.addAttribute("exam", exam);
+	    
+		
+	    return "exam/result";
+	}
+	
 	@RequestMapping(value="/delete/{id}")
 	public String delete(Model model,@PathVariable(name = "id") int id) {
 	    service.delete(id);
 	    extservice.deleteByExamId(id);
 	    qservice.deleteByExamId(id);
 	    exsservice.deleteByExamId(id);
+	    rservice.deleteByExamId(id);
 	    
 	    return "redirect:/exam";
 	}

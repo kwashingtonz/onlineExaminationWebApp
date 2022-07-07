@@ -71,10 +71,10 @@
 				<table style="width: auto; margin-right: 0px; margin-left: auto;">
 							<tr>
 								<td style="padding-right:5px;">
-									<a class="btn btn-sm btn-warning" th:href="@{/exam}">Save</a>
+									<a class="btn btn-sm btn-warning" data-toggle="confirmation" th:href="@{/exam}">Save</a>
 								</td>
 								<td>
-									<a class="btn btn-sm btn-primary" data-toggle="confirmation" th:href="@{'/exam/result/'+${exam.id}}+'/'+${user.id}">Complete</a>
+									<a class="btn btn-sm btn-primary" data-toggle="confirmation" th:href="@{'/exam/resultStudent/'+${exam.id}}+'/'+${user.id}">Complete</a>
 									<a id="btnEndExam" hidden="hidden" class="btn btn-sm btn-danger" th:href="@{'/exam/end/'+${exam.id}}"></a>
 								</td>
 							</tr>

@@ -42,4 +42,8 @@ public class ExamResultsService {
     public String getGivenAnswer(Integer uid,Integer eid, Integer qid) {
     	return repo.getGivenAnswer(uid,eid,qid);
     }
+    
+    public void deleteByExamId(Integer examId) {
+    	repo.deleteByExamId(examId);
+    }
 }
