@@ -232,6 +232,7 @@ public class ExamController {
 	    model.addAttribute("exam", exam);
 	    model.addAttribute("exsservice",exsservice);
 	    model.addAttribute("result",result);
+	    model.addAttribute("rservice",rservice);
 	    
 		
 	    return "exam/enroll";

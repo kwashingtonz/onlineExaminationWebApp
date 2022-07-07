@@ -38,4 +38,8 @@ public class ExamResultsService {
     public void updateResult(Integer uid,Integer eid, Integer qid,String givenAnswer) {
     	repo.updateResult(uid,eid,qid,givenAnswer);
     }
+    
+    public String getGivenAnswer(Integer uid,Integer eid, Integer qid) {
+    	return repo.getGivenAnswer(uid,eid,qid);
+    }
 }

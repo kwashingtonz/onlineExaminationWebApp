@@ -45,7 +45,7 @@
 										<input id="radio2" type="radio" name="anwser" onclick="frmSubmit()"> <label for="answer2" th:text="${question.answer2}"></label><input type="hidden" id="a2" th:value="${question.answer2}"><br>
 										<input id="radio3" type="radio" name="anwser" onclick="frmSubmit()"> <label for="answer3" th:text="${question.answer3}"></label><input type="hidden" id="a3" th:value="${question.answer3}"><br>
 										<input id="radio4" type="radio" name="anwser" onclick="frmSubmit()"> <label for="answer4" th:text="${question.answer4}"></label><input type="hidden" id="a4" th:value="${question.answer4}">
-										
+										<input id="markGivenAnswer" type="hidden" th:value="${rservice.getGivenAnswer(user.id,exam.id,question.queId)} ?: 'null'">
 										</form>
 									</td>
 								</tr>
@@ -75,6 +75,7 @@
 								</td>
 								<td>
 									<a class="btn btn-sm btn-primary" data-toggle="confirmation" th:href="@{'/exam/result/'+${exam.id}}+'/'+${user.id}">Complete</a>
+									<a id="btnEndExam" hidden="hidden" class="btn btn-sm btn-danger" th:href="@{'/exam/end/'+${exam.id}}"></a>
 								</td>
 							</tr>
 				</table>
@@ -86,6 +87,8 @@
 </div>
 
 <script>
+		var buttonEndExam = document.getElementById('btnEndExam');
+		
 		var countDownDate = new Date(document.getElementById('endDT').textContent).getTime();
 		
 				var x = setInterval(function() {
@@ -110,8 +113,35 @@
 			  if (distance < 0) {
 			    clearInterval(x);
 			    document.getElementById("timeLeft").innerHTML = "Time Left : EXPIRED";
+			    buttonEndExam.click();
 			  }
 			}, 1000);
+				
+				
+		const ga = document.getElementById("markGivenAnswer").value;
+		const one = document.getElementById("a1").value;
+		const two = document.getElementById("a2").value;
+		const three = document.getElementById("a3").value;
+    	const four = document.getElementById("a4").value;
+		
+    	if(ga != "null")
+		{
+			if(ga == one){
+				document.getElementById("radio1").checked = true;
+			}
+			
+			if(ga == two){
+				document.getElementById("radio2").checked = true;
+			}
+			
+			if(ga == three){
+				document.getElementById("radio3").checked = true;
+			}
+			
+			if(ga == four){
+				document.getElementById("radio4").checked = true;
+			}
+		}
 				
 		function frmSubmit(){
 			getGivenAnswer();

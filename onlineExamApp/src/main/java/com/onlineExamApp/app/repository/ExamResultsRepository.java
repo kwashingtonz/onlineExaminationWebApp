@@ -23,4 +23,7 @@ public interface ExamResultsRepository extends JpaRepository<ExamResults, Intege
 	@Query(value="UPDATE exam_results SET given_answer = ?4 WHERE user_id = ?1 AND exam_id = ?2 AND que_id = ?3  ", nativeQuery = true)
 	@Transactional
 	void updateResult(@Param("uid") Integer uid ,@Param("eid") Integer eid,@Param("qid") Integer qid,@Param("gA") String gA);
+
+	@Query(value="SELECT given_answer FROM exam_results  WHERE que_id = :qid AND user_id = :uid AND exam_id = :eid",nativeQuery = true)
+	String getGivenAnswer(@Param("uid") Integer uid ,@Param("eid") Integer eid,@Param("qid") Integer qid);
 }
