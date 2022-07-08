@@ -80,11 +80,17 @@ public class ExamResultsService {
     	Integer doneQues = repo.getCount(uid, eid);
     	String completion;
     	
-    	if(doneQues == noQues) {
-    		completion = "Completed";
+    	if(noQues != 0 && doneQues != 0 )
+    	{
+    		if(doneQues == noQues) {
+    			completion = "Completed";
+    		}else {
+    			completion = "Not Completed";
+    		}
     	}else {
-    		completion = "Not Completed";
+    		completion="Not Completed";
     	}
+    	
     	return completion;
     }
     
@@ -100,8 +106,12 @@ public class ExamResultsService {
     		
     		Integer noQues = erepo.getNoQues(eid);
         	Integer doneQues = repo.getCount(sid, eid);
-        	if(doneQues == noQues) {
-        		completedCount++;
+        	
+        	if(noQues != 0 && doneQues != 0 )
+        	{
+        		if(doneQues == noQues) {
+        			completedCount++;
+        		}
         	}
     		
     	}

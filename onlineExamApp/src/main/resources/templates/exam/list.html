@@ -51,7 +51,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 				                <td th:text="${(page.number * page.size) + rowNumber.index + 1}"></td>
 				                <td sec:authorize="hasAnyAuthority('STUDENT')"><a class="enroll" th:text="${exam.name}" th:href="@{'/exam/enroll/' + ${exam.id}}" ></a></td>				               				              
 				                <td sec:authorize="hasAnyAuthority('STUDENT')" hidden="hidden" class="ext" th:text="${extservice.examStatus(exam.id)}"></td>				               				          
-				                <td sec:authorize="hasAnyAuthority('TEACHER')"><a th:text="${exam.name}" th:href="@{'/exam/edit/' + ${exam.id}}" ></a></td>				               
+				                <td sec:authorize="hasAnyAuthority('TEACHER')"><a class="exedit" th:text="${exam.name}" th:href="@{'/exam/edit/' + ${exam.id}}" ></a></td>				               
 				                <td sec:authorize="hasAnyAuthority('TEACHER')" th:text="${#dates.format(exam.lastUpdatedDate, 'yyyy-MMM-dd')}"></td>               				                				          				                
 				                <td sec:authorize="hasAnyAuthority('STUDENT')" class="startingDate" th:text="${#dates.format(exam.startDateTime, 'yyyy-MMM-dd hh:mm a')}"></td>      
 				               	<td sec:authorize="hasAnyAuthority('STUDENT')" th:text="${cservice.durationDis(exam.duration)}"></td>      				             			               				             
@@ -83,19 +83,25 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 		var elts = document.getElementsByClassName("ext");
 		var es = document.getElementsByClassName("enroll");
 		var its = document.getElementsByClassName("exss");
+		var exedits = document.getElementsByClassName("exedit");
 		var startDates = document.getElementsByClassName("startingDate");
 		
 		for(var e = 0; e < elements.length; e++) { 
 			   var element = elements[e];
-			
+				var exedit = exedits[e];
 				var stat = element.innerHTML;
 				
 				if (stat != "PUBLISHED"){
 					if(stat != "ENDED"){
 						element.removeAttribute("href");
-					}	
+					}				
 				}
-			}	
+				
+				if(stat == "PUBLISHED" || stat == "ENDED"){
+					exedit.removeAttribute("href");
+				}
+			}
+		
 		
 		
 		for(var g = 0; g < elts.length; g++) { 
