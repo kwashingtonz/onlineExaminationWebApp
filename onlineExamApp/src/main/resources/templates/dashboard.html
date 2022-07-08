@@ -20,40 +20,50 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	<div id="content">	
 		<nav lang="en" th:replace="common/header :: header"></nav>
 		<div class="container my-3">
-			<nav aria-label="breadcrumb">
-			  <ol class="breadcrumb">
-			    <li class="breadcrumb-item active" aria-current="page">Dashboard -</li>
-			    &nbsp;
-			    <li sec:authorize="isAuthenticated()">
-				 
-				  <span sec:authentication="principal.authorities">Role</span>
-				</li>
-			  </ol>
-			</nav>
 			
+			<div align="center">
+				
+				<table>
+					<tr>
+						<td style="border: 1px solid #dee2e6;"  width="500px" height="200px">
+							<div>
+								<canvas id="lineChart"></canvas>
+							</div>
+						</td>
+						<td width="10px" background="white"></td>
+						<td style="border: 1px solid #dee2e6;" width="200px" >
+							<div>
+								<canvas id="doughnutChart"></canvas>
+							</div>
+						</td>
+						
+					</tr>
+					<tr height="10px" background="white"></tr>
+					<tr>
+						<td  style="border: 1px solid #dee2e6;" height="200px"></td>
+						<td   background="white"></td>
+						<td  style="border: 1px solid #dee2e6;"></td>
+						
+					</tr>
+				
+				</table>
+				
+				
+			</div>
 			
-			<div class="row">
-				<div class="col-sm-6">
-				<div class="exactCenter">
-					<div align="center" class="card">
-						<div class="card-body">
-							<h5 class="card-title">EXAMS</h5>
-							<p class="card-text">Online Examination System</p>
-							<a th:href="@{/exam}"
-								class="btn btn-primary">Go to Exam List</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			</div>
 		</div>
 	</div>
+	
+	<script th:src="@{/js/chart.js}"></script>
+	<script th:src="@{/js/customLineChart.js}"></script>
+	<script th:src="@{/js/customDoughnutChart.js}"></script>
 
 	<script type="text/javascript">
 		$('#dashboardMenuItem').addClass('active');
 	</script>
 
 	<footer lang="en" th:replace="common/footer :: footer"></footer>
+	
 	
 </body>
 </html>
