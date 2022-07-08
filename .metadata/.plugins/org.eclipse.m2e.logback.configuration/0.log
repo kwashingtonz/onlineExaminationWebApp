@@ -16223,3 +16223,13 @@ org.eclipse.core.runtime.CoreException: Launch configuration AppMain (1) referen
 2022-07-07 10:29:56,500 [Worker-1608: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
 2022-07-07 10:29:56,503 [Worker-1608: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2022-07-07 10:29:56,503 [Worker-1608: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-07-07 22:33:47,049 [Worker-1624: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-07 22:33:47,049 [Worker-1624: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-07-07 22:33:47,049 [Worker-1624: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-07-07 22:33:47,051 [Worker-1624: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-07 22:33:47,051 [Worker-1624: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-07-07 22:36:35,585 [Worker-1629: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-07 22:36:35,585 [Worker-1629: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-07-07 22:36:35,585 [Worker-1629: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-07-07 22:36:35,586 [Worker-1629: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-07 22:36:35,586 [Worker-1629: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
