@@ -238,17 +238,62 @@ public class ExamController {
 	    return "exam/enroll";
 	}
 	
-	@RequestMapping(value = "/resultsave", method = RequestMethod.POST)
-	public String updateGivenAnswer(@ModelAttribute("result") ExamResults result) {
-	    
+	
+	@RequestMapping(value = "/resultsave/{pno}", method = RequestMethod.POST, params="prevUpdate")
+	public String updatePrevGivenAnswer(@ModelAttribute("result") ExamResults result, @PathVariable(name = "pno") int pno) {
+		exsservice.updateLastQueNo(result.getUserId(),result.getExamId(),pno-1);
 		rservice.updateResult(result.getUserId(), result.getExamId(), result.getQueId(), result.getGivenAnswer());
 		Integer lqn = exsservice.getLastQueNo(result.getUserId(), result.getExamId());
 		String lastqn = lqn.toString();
 		String exId = result.getExamId().toString();
-		System.out.println(result.getUserId());
 		
 	    return "redirect:/exam/enroll/"+exId+"?page="+lastqn;
 	}
+	
+	@RequestMapping(value = "/resultsave/{pno}", method = RequestMethod.POST, params="nextUpdate")
+	public String updateNextGivenAnswer(@ModelAttribute("result") ExamResults result, @PathVariable(name = "pno") int pno) {
+		exsservice.updateLastQueNo(result.getUserId(),result.getExamId(),pno+1);
+		rservice.updateResult(result.getUserId(), result.getExamId(), result.getQueId(), result.getGivenAnswer());
+		Integer lqn = exsservice.getLastQueNo(result.getUserId(), result.getExamId());
+		String lastqn = lqn.toString();
+		String exId = result.getExamId().toString();
+		
+	    return "redirect:/exam/enroll/"+exId+"?page="+lastqn;
+	}
+	
+	@RequestMapping(value = "/resultsave/{pno}", method = RequestMethod.POST, params="saveUpdate")
+	public String updateSaveGivenAnswer(@ModelAttribute("result") ExamResults result, @PathVariable(name = "pno") int pno) {
+		rservice.updateResult(result.getUserId(), result.getExamId(), result.getQueId(), result.getGivenAnswer());
+		
+	    return "redirect:/exam";
+	}
+	
+	
+	
+	@RequestMapping(value = "/resultsave/{pno}", method = RequestMethod.POST, params="completeUpdate")
+	public String updateCompleteStudentExamResult(@ModelAttribute("result") ExamResults result, @PathVariable(name = "pno") int pno,
+			@AuthenticationPrincipal MyUserDetails user,Model model,@PageableDefault(value = PaginatorHelper.DEFAULT_PAGINATION_SIZE, page = 0) Pageable pageable) {
+
+		exsservice.updateLastQueNo(result.getUserId(),result.getExamId(),pno);
+		rservice.updateResult(result.getUserId(), result.getExamId(), result.getQueId(), result.getGivenAnswer());
+		
+		exsservice.updateStudentStatus(result.getUserId(), result.getExamId());
+		
+		List<ExamQuestions> question = qservice.listQuestionsAll(result.getExamId());
+		Page<ExamQuestions> page=PaginatorHelper.pagiableList(question, pageable);
+		
+		Exam exam = service.get(result.getExamId());
+		
+		model.addAttribute("question", question);
+		model.addAttribute("page",page);
+	    model.addAttribute("user", user);
+	    model.addAttribute("exam", exam);
+	    model.addAttribute("rservice",rservice);
+	    
+		
+	    return "exam/result";
+	}
+	
 	
 	@RequestMapping("/result/{id}/{uid}")
 	public String resultExam(@AuthenticationPrincipal MyUserDetails user,Model model, @PathVariable(name = "id") int id, @PathVariable(name = "uid") int uid,
@@ -288,6 +333,7 @@ public class ExamController {
 		
 	    return "exam/result";
 	}
+	
 	
 	@RequestMapping("/resultStudent/{id}/{uid}")
 	public String resultStudentExam(@AuthenticationPrincipal MyUserDetails user,Model model, @PathVariable(name = "id") int id, @PathVariable(name = "uid") int uid,

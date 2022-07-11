@@ -5,7 +5,7 @@
 		
 			<ul class="pagination  justify-content-end">
 		  		<li class="page-item" th:if="${page.hasPrevious()}">
-		  			<a class="page-link" th:href="@{'?page=' + ${page.number-1}}" th:onclick="${exsservice.updateLastQueNo(user.id,exam.id,page.number)}">Previous</a>
+		  			<button type="submit" class="page-link" name="prevUpdate" value="prevUpdate">Previous</button>
 		  		</li>
 		  		
 		  		<li class="page-item disabled" th:unless="${page.hasPrevious()}">
@@ -17,10 +17,10 @@
 				</li>
 		       	
 		      	<li class="page-item" th:if="${page.hasNext()}">
-		      		<a style="width:80px;" class="page-link" th:href="@{'?page=' + ${page.number+1}}" th:onclick="${exsservice.updateLastQueNo(user.id,exam.id,page.number)}">Next</a>
+		      		<button type="submit" style="width:80px;" class="page-link" name="nextUpdate" value="nextUpdate">Next</button>
 		      	</li>
-		      	<li class="page-item disabled" th:unless="${page.hasNext()}">
-		      		<a  style="text-align:center; width:80px;" class="page-link">Next</a>
+		      	<li class="page-item" th:unless="${page.hasNext()}">
+		      		<button type="submit" style="background-color:#007bff; color:white; width:100px;" class="page-link" data-toggle="confirmation" name="completeUpdate" value="completeUpdate">Complete</button>
 		      	</li>
 		      	
 			</ul>

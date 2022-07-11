@@ -146,6 +146,7 @@
 		
 		var elements = document.getElementsByClassName("completion");
 		var ets = document.getElementsByClassName("result");
+		var tls = document.getElementById("timeLeft").innerHTML;
 		
 		for(var e = 0; e < elements.length; e++) {
 			   var element = elements[e];
@@ -154,9 +155,11 @@
 				var compl = element.innerHTML;
 				
 				if (compl != "Completed"){
-					if(compl != "Not Finished"){
-						et.removeAttribute("href");
-					}		
+					if (compl != "Partially Completed"){
+						if(tls != "EXAM ENDED"){
+							et.removeAttribute("href");	
+						}
+					}
 				}
 			}
 		

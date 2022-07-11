@@ -61,7 +61,13 @@ public class ExamResultsService {
     	if(givenAnswer.equals(cA)) {
     		rstatus = "Correct";
     	}else {
-    		rstatus = "Wrong";
+    		if(givenAnswer.equals(""))
+    		{
+    			givenAnswer = null;
+    			rstatus = null;
+    		}else {
+    			rstatus = "Wrong";
+    		}   		
     	}
     	
     	repo.updateResult(uid,eid,qid,givenAnswer,rstatus);
@@ -80,22 +86,19 @@ public class ExamResultsService {
     	Integer doneQues = repo.getCount(uid, eid);
     	String completion; 	
     	
-    	if(noQues != 0 && doneQues != 0 )
+    	if(noQues > 0 && doneQues > 0 )
     	{
     		if(doneQues == noQues) {
     			completion = "Completed";
-    		}else {
+    		}else if(doneQues<noQues){
+    			completion = "Partially Completed";
+    		}else{
     			completion = "Not Completed";
     		}
     	}else {
-    		
-    		if(noQues != 0 && doneQues == 0 ) {
-    			completion= "Not Finished";
-    		}else {
-    			completion="Not Completed";
-    		} 		
+    		completion = "Not Completed";
     	}
-    	
+    		
     	return completion;
     }
     

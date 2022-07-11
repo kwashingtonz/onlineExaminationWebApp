@@ -13,11 +13,14 @@
 			</nav>
 			
 			<div class="container" >
+			<th:block th:if="${page.content.size() > 0 }">
 			<div class="table-responsive">
 				<table class="table-responsive" style="width:40%; margin-right:auto; margin-left:auto;" >
-					<th:block th:if="${page.content.size() > 0 }">
 					<tr th:each="question ,rowNumber : ${page.content}">	
+								
 						<td>
+							<form onsubmit="return getGivenAnswer(this)" id="answerForm" th:action="@{'/exam/resultsave/'+${page.number}}" th:object="${result}" method="post" class="need-validated">
+						
 							<table>
 								<tr>
 									<td colspan="3" width="600px" height="60px" style="padding-left:120px;">
@@ -25,7 +28,7 @@
 										<p id="timeLeft" ></p>
 									</td>
 								</tr>
-						
+										
 								<tr>
 									<td style="font-weight:bold;" colspan="3" height="50px" th:text="'Q: '+${question.question}">
 										
@@ -35,18 +38,17 @@
 								<tr>
 									<td style="border: 1px solid #dee2e6; padding-left:40px;" colspan="3" height="200px">
 										
-										<form id="answerForm" th:action="@{/exam/resultsave/}" th:object="${result}" method="post" class="need-validated">
 										
 										<input type="hidden" th:value="${user.id}" th:id="userId" th:name="userId">
 										<input type="hidden" th:value="${exam.id}" th:id="examId" th:name="examId">
 										<input type="hidden" th:value="${question.queId}" th:id="queId" th:name="queId">
 										<input id="givenAnswer" type="hidden" th:id="givenAnswer" th:name="givenAnswer">
-										<input id="radio1" type="radio" name="anwser" onclick="frmSubmit()"> <label for="answer1" th:text="${question.answer1}"></label><input type="hidden" id="a1" th:value="${question.answer1}"><br>
-										<input id="radio2" type="radio" name="anwser" onclick="frmSubmit()"> <label for="answer2" th:text="${question.answer2}"></label><input type="hidden" id="a2" th:value="${question.answer2}"><br>
-										<input id="radio3" type="radio" name="anwser" onclick="frmSubmit()"> <label for="answer3" th:text="${question.answer3}"></label><input type="hidden" id="a3" th:value="${question.answer3}"><br>
-										<input id="radio4" type="radio" name="anwser" onclick="frmSubmit()"> <label for="answer4" th:text="${question.answer4}"></label><input type="hidden" id="a4" th:value="${question.answer4}">
+										<input id="radio1" type="radio" name="anwser"> <label for="answer1" th:text="${question.answer1}"></label><input type="hidden" id="a1" th:value="${question.answer1}"><br>
+										<input id="radio2" type="radio" name="anwser"> <label for="answer2" th:text="${question.answer2}"></label><input type="hidden" id="a2" th:value="${question.answer2}"><br>
+										<input id="radio3" type="radio" name="anwser"> <label for="answer3" th:text="${question.answer3}"></label><input type="hidden" id="a3" th:value="${question.answer3}"><br>
+										<input id="radio4" type="radio" name="anwser"> <label for="answer4" th:text="${question.answer4}"></label><input type="hidden" id="a4" th:value="${question.answer4}">
 										<input id="markGivenAnswer" type="hidden" th:value="${rservice.getGivenAnswer(user.id,exam.id,question.queId)} ?: 'null'">
-										</form>
+										
 									</td>
 								</tr>
 						
@@ -58,28 +60,34 @@
 								<tr>
 									<td></td>
 									<td align="center" style="padding-left:90px;"><th:block lang="en" th:replace="common/custompager :: common"> </th:block></td>
-									<td></td>
+									<td><button id="saveUpdatebtn" type="submit" hidden="hidden" name="saveUpdate" value="saveUpdate"></button></td>
+									
 								</tr>
 							</table>
+							
+							</form>
 													
 						</td>
+						
 					</tr>
-				</th:block>
+					
+				
 				</table>
 				</div>
 				<div class="table-responsive">
 				<table style="width: auto; margin-right: 0px; margin-left: auto;">
 							<tr>
 								<td style="padding-right:5px;">
-									<a class="btn btn-sm btn-warning" data-toggle="confirmation" th:href="@{/exam}">Save</a>
+									<a class="btn btn-sm btn-warning" onclick="pressSave()">Save</a>
 								</td>
 								<td>
-									<a class="btn btn-sm btn-primary" data-toggle="confirmation" th:href="@{'/exam/resultStudent/'+${exam.id}}+'/'+${user.id}">Complete</a>
+									<a class="btn btn-sm btn-primary" data-toggle="confirmation" th:if="${page.hasNext()}" th:href="@{'/exam/resultStudent/'+${exam.id}}+'/'+${user.id}">Complete</a>
 									<a id="btnEndExam" hidden="hidden" class="btn btn-sm btn-danger" th:href="@{'/exam/end/'+${exam.id}}"></a>
 								</td>
 							</tr>
 				</table>
-				</div>				
+				</div>	
+				</th:block>			
 			</div>
 			
 		</div>
@@ -142,16 +150,9 @@
 				document.getElementById("radio4").checked = true;
 			}
 		}
-				
-		function frmSubmit(){
-			getGivenAnswer();
-			
-			const form = document.getElementById('answerForm');
-			
-			form.submit();
-		}
-		
-		function getGivenAnswer(){
+
+    	
+		function getGivenAnswer(form){
 			
 			const a = document.getElementById("a1").value;
 			const b = document.getElementById("a2").value;
@@ -161,25 +162,27 @@
 			if(document.getElementById("radio1").checked){
 				
 				document.getElementById("givenAnswer").value = a;
-			}
-			
-			if(document.getElementById("radio2").checked){
+			}else if(document.getElementById("radio2").checked){
 								
 				document.getElementById("givenAnswer").value = b; 
-			}
-			
-			if(document.getElementById("radio3").checked){
+			}else if(document.getElementById("radio3").checked){
 				
 				document.getElementById("givenAnswer").value = c;
-			}
-			
-			if(document.getElementById("radio4").checked){
+			}else if(document.getElementById("radio4").checked){
 				
 				document.getElementById("givenAnswer").value = d;
+			}else{
+				document.getElementById("givenAnswer").value = null;
 			}
 			
 			return true;
 	}
+		
+		function pressSave(){
+			var btnSaveUpdate = document.getElementById("saveUpdatebtn");
+			
+			btnSaveUpdate.click();
+		}
 				
 	</script>
 	
