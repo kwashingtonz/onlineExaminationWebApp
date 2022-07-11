@@ -1,5 +1,0 @@
-package com.onlineExamApp.app.repository;
-
-public interface QuestionRepository {
-
-}

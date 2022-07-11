@@ -54,7 +54,7 @@
 			        					<th:block th:if="${page.content.size() > 0 }">
 											<tr th:each="question ,rowNumber : ${page.content}">	
 												<td th:text="'Question '+${(page.number * page.size) + rowNumber.index + 1}"></td>				               				              
-				                				<td class="completion" th:text="${rservice.getResultStatus(user.id,exam.id,question.queId)}"></td>				               
+				                				<td class="completion" th:text="${rservice.getResultStatus(user.id,exam.id,question.queId) ?: 'NOT GIVEN'}"></td>				               
 				                			</tr>
 				        				</th:block>
 				        				<th:block th:unless="${page.content.size() > 0 }">

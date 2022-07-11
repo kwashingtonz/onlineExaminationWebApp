@@ -78,7 +78,7 @@ public class ExamResultsService {
     public String getCompletion(Integer uid,Integer eid) {
     	Integer noQues = erepo.getNoQues(eid);
     	Integer doneQues = repo.getCount(uid, eid);
-    	String completion;
+    	String completion; 	
     	
     	if(noQues != 0 && doneQues != 0 )
     	{
@@ -88,7 +88,12 @@ public class ExamResultsService {
     			completion = "Not Completed";
     		}
     	}else {
-    		completion="Not Completed";
+    		
+    		if(noQues != 0 && doneQues == 0 ) {
+    			completion= "Not Finished";
+    		}else {
+    			completion="Not Completed";
+    		} 		
     	}
     	
     	return completion;

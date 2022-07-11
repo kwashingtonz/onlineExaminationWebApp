@@ -12448,3 +12448,346 @@ java.util.concurrent.TimeoutException
 
 !ENTRY org.eclipse.wst.html.ui 1 1 2022-07-08 18:19:25.889
 !MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-08 19:46:59.274
+!MESSAGE No line style provider for org.eclipse.wst.sse.ST_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-08 19:46:59.278
+!MESSAGE No line style provider for org.eclipse.wst.sse.UNKNOWN_PARTITION_TYPE
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-08 19:46:59.281
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-08 19:46:59.284
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_CDATA
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-08 19:46:59.287
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DECL
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-08 19:46:59.288
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_COMMENT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-08 19:46:59.290
+!MESSAGE No line style provider for org.eclipse.wst.xml.dtd.internal_subset
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-08 19:46:59.292
+!MESSAGE No line style provider for org.eclipse.wst.xml.PROCESSING_INSTRUCTION:
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-08 19:46:59.293
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-08 19:46:59.294
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-08 19:55:51.835
+!MESSAGE No line style provider for org.eclipse.wst.sse.ST_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-08 19:55:51.836
+!MESSAGE No line style provider for org.eclipse.wst.sse.UNKNOWN_PARTITION_TYPE
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-08 19:55:51.836
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-08 19:55:51.837
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_CDATA
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-08 19:55:51.838
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DECL
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-08 19:55:51.839
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_COMMENT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-08 19:55:51.839
+!MESSAGE No line style provider for org.eclipse.wst.xml.dtd.internal_subset
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-08 19:55:51.840
+!MESSAGE No line style provider for org.eclipse.wst.xml.PROCESSING_INSTRUCTION:
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-08 19:55:51.840
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-08 19:55:51.841
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER
+!SESSION 2022-07-10 12:07:02.426 -----------------------------------------------
+eclipse.buildId=4.16.0.I20200604-0540
+java.version=1.8.0_112
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2022-07-10 12:07:26.747
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jface 2 0 2022-07-10 12:07:40.425
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2022-07-10 12:07:40.425
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@21d48c40,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@4a10c019,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:08:36.477
+!MESSAGE No line style provider for org.eclipse.wst.sse.ST_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:08:36.477
+!MESSAGE No line style provider for org.eclipse.wst.sse.UNKNOWN_PARTITION_TYPE
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:08:36.495
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:08:36.535
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_CDATA
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:08:36.540
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DECL
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:08:36.540
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_COMMENT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:08:36.541
+!MESSAGE No line style provider for org.eclipse.wst.xml.dtd.internal_subset
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:08:36.542
+!MESSAGE No line style provider for org.eclipse.wst.xml.PROCESSING_INSTRUCTION:
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:08:36.543
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:08:36.546
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER
+
+!ENTRY org.eclipse.egit.ui 2 0 2022-07-10 12:09:02.363
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Kalindu Washington'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2022-07-10 12:11:18.394 -----------------------------------------------
+eclipse.buildId=4.16.0.I20200604-0540
+java.version=1.8.0_112
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.jface 2 0 2022-07-10 12:11:29.393
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2022-07-10 12:11:29.393
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@19b3d3a4,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3a9040f0,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:11:36.659
+!MESSAGE No line style provider for org.eclipse.wst.sse.ST_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:11:36.660
+!MESSAGE No line style provider for org.eclipse.wst.sse.UNKNOWN_PARTITION_TYPE
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:11:36.661
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:11:36.661
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_CDATA
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:11:36.665
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DECL
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:11:36.666
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_COMMENT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:11:36.667
+!MESSAGE No line style provider for org.eclipse.wst.xml.dtd.internal_subset
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:11:36.668
+!MESSAGE No line style provider for org.eclipse.wst.xml.PROCESSING_INSTRUCTION:
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:11:36.669
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:11:36.671
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER
+
+!ENTRY org.eclipse.egit.ui 2 0 2022-07-10 12:11:41.211
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Kalindu Washington'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:11:53.010
+!MESSAGE No line style provider for org.eclipse.wst.sse.ST_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:11:53.011
+!MESSAGE No line style provider for org.eclipse.wst.sse.UNKNOWN_PARTITION_TYPE
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:11:53.012
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:11:53.013
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_CDATA
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:11:53.015
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DECL
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:11:53.015
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_COMMENT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:11:53.016
+!MESSAGE No line style provider for org.eclipse.wst.xml.dtd.internal_subset
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:11:53.017
+!MESSAGE No line style provider for org.eclipse.wst.xml.PROCESSING_INSTRUCTION:
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:11:53.017
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:11:53.018
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:12:00.102
+!MESSAGE No line style provider for org.eclipse.wst.sse.ST_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:12:00.102
+!MESSAGE No line style provider for org.eclipse.wst.sse.UNKNOWN_PARTITION_TYPE
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:12:00.103
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:12:00.104
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_CDATA
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:12:00.106
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DECL
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:12:00.107
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_COMMENT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:12:00.108
+!MESSAGE No line style provider for org.eclipse.wst.xml.dtd.internal_subset
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:12:00.109
+!MESSAGE No line style provider for org.eclipse.wst.xml.PROCESSING_INSTRUCTION:
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:12:00.110
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-10 12:12:00.110
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 07:22:10.777
+!MESSAGE No line style provider for org.eclipse.wst.sse.ST_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 07:22:10.801
+!MESSAGE No line style provider for org.eclipse.wst.sse.UNKNOWN_PARTITION_TYPE
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 07:22:10.838
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 07:22:10.840
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_CDATA
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 07:22:10.843
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DECL
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 07:22:10.843
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_COMMENT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 07:22:10.844
+!MESSAGE No line style provider for org.eclipse.wst.xml.dtd.internal_subset
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 07:22:10.845
+!MESSAGE No line style provider for org.eclipse.wst.xml.PROCESSING_INSTRUCTION:
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 07:22:10.846
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 07:22:10.846
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 08:49:40.475
+!MESSAGE No line style provider for org.eclipse.wst.sse.ST_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 08:49:40.493
+!MESSAGE No line style provider for org.eclipse.wst.sse.UNKNOWN_PARTITION_TYPE
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 08:49:40.509
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 08:49:40.510
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_CDATA
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 08:49:40.510
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DECL
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 08:49:40.511
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_COMMENT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 08:49:40.512
+!MESSAGE No line style provider for org.eclipse.wst.xml.dtd.internal_subset
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 08:49:40.513
+!MESSAGE No line style provider for org.eclipse.wst.xml.PROCESSING_INSTRUCTION:
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 08:49:40.514
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 08:49:40.515
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 09:03:19.351
+!MESSAGE No line style provider for org.eclipse.wst.sse.ST_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 09:03:19.367
+!MESSAGE No line style provider for org.eclipse.wst.sse.UNKNOWN_PARTITION_TYPE
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 09:03:19.369
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 09:03:19.372
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_CDATA
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 09:03:19.373
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DECL
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 09:03:19.374
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_COMMENT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 09:03:19.374
+!MESSAGE No line style provider for org.eclipse.wst.xml.dtd.internal_subset
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 09:03:19.375
+!MESSAGE No line style provider for org.eclipse.wst.xml.PROCESSING_INSTRUCTION:
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 09:03:19.375
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2022-07-11 09:03:19.377
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER

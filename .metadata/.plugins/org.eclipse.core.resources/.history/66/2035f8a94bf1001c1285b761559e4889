@@ -1,8 +1,0 @@
-package com.onlineExamApp.app.repository;
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.onlineExamApp.app.model.Subject;
-
-public interface SubjectRepository extends JpaRepository<Subject, Integer>{
-
-}

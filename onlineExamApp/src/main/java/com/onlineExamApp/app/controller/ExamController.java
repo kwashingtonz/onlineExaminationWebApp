@@ -365,6 +365,14 @@ public class ExamController {
 		return "redirect:/exam";
 	}
 	
+	@RequestMapping("/Tend/{id}")
+	public String endTExam(Model model,@PathVariable(name = "id") int id) {
+		
+		extservice.finishExam(id);
+		
+		return "redirect:/exam/status/"+id;
+	}
+	
 	@GetMapping("/403")
 	public String error403() {
 		return "403";
